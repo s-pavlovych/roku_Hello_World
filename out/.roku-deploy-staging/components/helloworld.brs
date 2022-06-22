@@ -39,6 +39,7 @@
   function onKeyEvent(key as String, press as Boolean) as Boolean
       handled = false
       finish()
+      print(m.count)
       if (key = "OK") and (press = true)
         count()
         handled = true
