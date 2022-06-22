@@ -15,6 +15,7 @@ sub Main()
     'Create a scene and load /components/helloworld.xml'
     scene = screen.CreateScene("HelloWorld")
     screen.show()
+    scene.setFocus(true)
 
     while(true)
         msg = wait(0, m.port)
