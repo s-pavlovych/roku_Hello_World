@@ -1,23 +1,25 @@
 function init()
     m.myLabel = m.top.findNode("myLabel")
-    m.counter = m.top.findNode("Counter")
+    m.counter = m.top.findNode("counter")
     m.testPoster = m.top.findNode("testPoster")
     m.rectangle = m.top.findNode("testRectangle")
+    m.myScene = m.top.findNode("HelloWorld")
     m.myLabel.font.size = 70
     m.counter.font.size = 30
+    m.top.addField("count", "integer", true)
+    m.top.setField("count", "0")
     m.posterTranslation = m.testPoster.translation
     m.rectTranslation = m.Rectangle.translation
-    m.count = 0
+    m.top.observeField("count","counting")
 end function
 
-function count() as object
-    m.count += 1
-    m.myLabel.text = "You pressed OK" + stri(m.count) + " time"
-    if m.count > 1
+function counting() as object
+    m.myLabel.text = "You pressed OK" + stri(m.top.count) + " time"
+    if m.top.count > 1
         m.myLabel.text += "s"
     end if
 
-    if m.count >= 10
+    if m.top.count >= 10
         m.testPoster.visible = true
         m.Rectangle.visible = true
         m.counter.text = "Keep pressing OK or move the Poster to square using arrows"
@@ -32,23 +34,27 @@ function finish() as object
 end function
 
 function onKeyEvent(key as string, press as boolean) as boolean
+    ? "function onKeyEvent("key" as string, "press" as boolean) as boolean"
     handled = false
-    finish()
-    if (key = "OK") and (press = true)
-        count()
-        handled = true
-    else if (key = "up") and (press = true)
-        m.posterTranslation [1] -= 5
-        handled = true
-    else if (key = "down") and (press = true)
-        m.posterTranslation [1] += 5
-        handled = true
-    else if (key = "left") and (press = true)
-        m.posterTranslation [0] -= 5
-        handled = true
-    else if (key = "right") and (press = true)
-        m.posterTranslation [0] += 5
-        handled = true
+    if press
+        if key = "OK"
+            m.top.count++
+            ? (m.count)
+            handled = true
+        else if (key = "up")
+            m.posterTranslation [1] -= 5
+            handled = true
+        else if (key = "down") 
+            m.posterTranslation [1] += 5
+            handled = true
+        else if (key = "left")
+            m.posterTranslation [0] -= 5
+            handled = true
+        else if (key = "right") 
+            m.posterTranslation [0] += 5
+            handled = true
+        end if
+        finish()
     end if
     return handled
 end function

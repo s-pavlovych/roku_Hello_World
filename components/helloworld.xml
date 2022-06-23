@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="HelloWorld" extends="Scene"> 
+<component name="HelloWorld" extends="Scene" > 
+
 	<children>
       <Label 
         id="myLabel" 
@@ -8,9 +9,10 @@
       	height="720" 
       	horizAlign="center"
       	vertAlign="center"
+        count="0"
       	/>
         <Label 
-        id="Counter" 
+        id="counter" 
       	text="Press the OK button"
       	width="1280" 
       	height="720" 
