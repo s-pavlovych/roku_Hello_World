@@ -9,8 +9,12 @@
       	height="720" 
       	horizAlign="center"
       	vertAlign="center"
-        count="0"
       	/>
+      <LoadingAnimation
+      id="myAnimation"
+      duration= "20"
+        />
+        
         <Label 
         id="counter" 
       	text="Press the OK button"

@@ -36,7 +36,6 @@ end function
 function onKeyEvent(key as string, press as boolean) as boolean
     ? "function onKeyEvent("key" as string, "press" as boolean) as boolean"
     handled = false
-    
     if press
         if key = "OK"
             m.top.count++
@@ -57,6 +56,5 @@ function onKeyEvent(key as string, press as boolean) as boolean
         end if
         finish()
     end if
-    
     return handled
 end function
