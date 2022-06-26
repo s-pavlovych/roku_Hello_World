@@ -17,9 +17,9 @@ function setDuration() as void
 end function
 
 function setColorDuration() as void
-   m.animationColor1.duration = (m.top.duration)*3
-   m.animationColor2.duration = (m.top.duration)*3
-   m.animationColor3.duration = (m.top.duration)*3
+   m.animationColor1.duration = (m.top.duration)*4
+   m.animationColor2.duration = (m.top.duration)*4
+   m.animationColor3.duration = (m.top.duration)*4
 end function
 
 function setAnimationControl() as void

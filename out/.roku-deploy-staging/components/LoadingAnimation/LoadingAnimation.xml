@@ -73,8 +73,8 @@ easeFunction = "linear"
 repeat = "true"
 delay = "0.1" >
 <ColorFieldInterpolator id = "c1color"
-key="[0.0, 0.5, 1.0]" 
-keyValue="[ 0x000000FF, 0x0000FF00, 0x00FF0000]"
+key="[0.0, 0.5, 0.75, 1.0]" 
+keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
 fieldToInterp="circleOne.blendColor"/>
 </Animation>
 
@@ -83,8 +83,8 @@ easeFunction = "linear"
 repeat = "true"
 delay = "0.2" >
 <ColorFieldInterpolator id = "c2color"
-key="[0.0, 0.5, 1.0]" 
-keyValue="[ 0x000000FF, 0x0000FF00, 0x00FF0000]"
+key="[0.0, 0.5, 0.75, 1.0]" 
+keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
 fieldToInterp="circleTwo.blendColor"/>
 </Animation>
 
@@ -93,8 +93,8 @@ easeFunction = "linear"
 repeat = "true"
 delay = "0.3" >
 <ColorFieldInterpolator id = "c3color"
-key="[0.0, 0.5, 1.0]" 
-keyValue="[ 0x000000FF, 0x0000FF00, 0x00FF0000]"
+key="[0.0, 0.5, 0.75, 1.0]" 
+keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
 fieldToInterp="circleThree.blendColor"/>
 </Animation>
 
