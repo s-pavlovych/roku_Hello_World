@@ -12,7 +12,9 @@
       	/>
       <LoadingAnimation
       id="myAnimation"
-      duration= "20"
+      duration= "2"
+      translation= "[100,100]"
+      control= "start"
         />
         
         <Label 
