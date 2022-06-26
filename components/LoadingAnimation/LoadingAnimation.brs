@@ -29,4 +29,7 @@ function setAnimationControl() as void
    m.animationColor1.control = m.top.control
    m.animationColor2.control = m.top.control
    m.animationColor3.control = m.top.control
+   if m.top.control = "stop"
+      m.top.visible = "false"
+   end if
 end function
