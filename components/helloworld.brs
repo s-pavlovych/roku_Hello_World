@@ -10,7 +10,7 @@ function init()
     m.top.setField("count", "0")
     m.posterTranslation = m.testPoster.translation
     m.rectTranslation = m.Rectangle.translation
-    m.top.observeField("count","counting")
+    m.top.observeField("count", "counting")
 end function
 
 function counting() as object
@@ -18,7 +18,6 @@ function counting() as object
     if m.top.count > 1
         m.myLabel.text += "s"
     end if
-
     if m.top.count >= 10
         m.testPoster.visible = true
         m.Rectangle.visible = true
@@ -44,13 +43,13 @@ function onKeyEvent(key as string, press as boolean) as boolean
         else if (key = "up")
             m.posterTranslation [1] -= 5
             handled = true
-        else if (key = "down") 
+        else if (key = "down")
             m.posterTranslation [1] += 5
             handled = true
         else if (key = "left")
             m.posterTranslation [0] -= 5
             handled = true
-        else if (key = "right") 
+        else if (key = "right")
             m.posterTranslation [0] += 5
             handled = true
         end if

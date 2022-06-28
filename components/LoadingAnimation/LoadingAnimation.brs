@@ -1,4 +1,4 @@
-function init() 
+function init()
    m.animation1 = m.top.FindNode("c1Animation")
    m.animation2 = m.top.FindNode("c2Animation")
    m.animation3 = m.top.FindNode("c3Animation")
@@ -9,7 +9,7 @@ function init()
    setColorDuration()
    setDuration()
 end function
- 
+
 function setDuration() as void
    m.animation1.duration = m.top.duration
    m.animation2.duration = m.top.duration
@@ -17,9 +17,9 @@ function setDuration() as void
 end function
 
 function setColorDuration() as void
-   m.animationColor1.duration = (m.top.duration)*4
-   m.animationColor2.duration = (m.top.duration)*4
-   m.animationColor3.duration = (m.top.duration)*4
+   m.animationColor1.duration = (m.top.duration) * 4
+   m.animationColor2.duration = (m.top.duration) * 4
+   m.animationColor3.duration = (m.top.duration) * 4
 end function
 
 function setAnimationControl() as void
@@ -32,4 +32,16 @@ function setAnimationControl() as void
    if m.top.control = "stop"
       m.top.visible = "false"
    end if
+end function
+
+function onKeyEvent(key as string, press as boolean) as boolean
+   handled = false
+   if press and key = "Options"
+      if m.top.control = "stop"
+         m.top.control = "start"
+      else m.top.control = "stop"
+         handled = true
+      end if
+   end if
+   return handled
 end function
