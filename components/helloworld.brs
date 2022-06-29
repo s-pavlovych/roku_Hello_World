@@ -4,6 +4,7 @@ function init()
     m.testPoster = m.top.findNode("testPoster")
     m.rectangle = m.top.findNode("testRectangle")
     m.myScene = m.top.findNode("HelloWorld")
+    m.loadingAnimation = m.top.findNode("myAnimation")
     m.myLabel.font.size = 70
     m.counter.font.size = 30
     m.top.addField("count", "integer", true)
@@ -52,7 +53,13 @@ function onKeyEvent(key as string, press as boolean) as boolean
         else if (key = "right")
             m.posterTranslation [0] += 5
             handled = true
-        end if
+        else if (key = "options")
+            if m.loadingAnimation.control = "start"
+               m.loadingAnimation.control = "stop"
+            else  m.loadingAnimation.control = "start"
+            end if
+            handled = true
+         end if
         finish()
     end if
     return handled

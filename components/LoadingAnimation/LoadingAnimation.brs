@@ -31,17 +31,6 @@ function setAnimationControl() as void
    m.animationColor3.control = m.top.control
    if m.top.control = "stop"
       m.top.visible = "false"
+   else m.top.visible = "true"
    end if
-end function
-
-function onKeyEvent(key as string, press as boolean) as boolean
-   handled = false
-   if press and key = "Options"
-      if m.top.control = "stop"
-         m.top.control = "start"
-      else m.top.control = "stop"
-         handled = true
-      end if
-   end if
-   return handled
 end function
