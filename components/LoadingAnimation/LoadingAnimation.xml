@@ -42,7 +42,7 @@
 
 <ParallelAnimation id="animateCircles">
 
-<Animation id="c1Animation" easeFunction="inOutCubic" repeat="false" delay="0.2">
+<Animation id="c1Animation" easeFunction="outQuad" repeat="false" delay="0">
 <Vector2DFieldInterpolator
           id="c1translation"
           fieldToInterp="circleOne.translation"
@@ -51,7 +51,7 @@
         />
 </Animation>
 
-<Animation id="c2Animation" easeFunction="inOutCubic" repeat="false" delay="0.4">
+<Animation id="c2Animation" easeFunction="outQuad" repeat="false" delay="0.1">
 <Vector2DFieldInterpolator
           id="c2translation"
           fieldToInterp="circleTwo.translation"
@@ -60,7 +60,7 @@
         />
 </Animation>
 
-<Animation id="c3Animation" easeFunction="inOutCubic" repeat="false" delay="0.6">
+<Animation id="c3Animation" easeFunction="outQuad" repeat="false" delay="0.2">
 <Vector2DFieldInterpolator
           id="c3translation"
           fieldToInterp="circleThree.translation"
