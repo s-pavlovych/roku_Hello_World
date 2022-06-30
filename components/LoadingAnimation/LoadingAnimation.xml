@@ -1,20 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <component name="LoadingAnimation" extends="Group">
 
 <interface>
-    <field id="duration" type="time" value="1" onChange="setDuration" />
-    <field
-      id="control"
-      type="string"
-      value="start"
-      onChange="setAnimationControl"
-    />
+    <field id="duration" type="time" value="1" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
+    <field id="control" type="string" value="start" alias ="c1Animation.control, c2Animation.control, c3Animation.control"/>
+    <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/>
+    <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>
+    <field id="colorReverse" type="boolean" value="false" alias ="c1color.reverse, c2color.reverse, c3color.reverse"/>
 </interface>
-
-<script
-    type="text/brightscript"
-    uri="pkg:/components/LoadingAnimation/LoadingAnimation.brs"
-  />
 
 <children>
 
@@ -24,7 +16,7 @@
         id="circleOne"
         width="20"
         height="20"
-        translation="[200, 200]"
+        translation="[0, 20]"
         uri="pkg:/images/white_circle.png"
       />
 
@@ -32,7 +24,7 @@
         id="circleTwo"
         width="20"
         height="20"
-        translation="[220, 200]"
+        translation="[20, 20]"
         uri="pkg:/images/white_circle.png"
       />
           
@@ -40,7 +32,7 @@
         id="circleThree"
         width="20"
         height="20"
-        translation="[240, 200]"
+        translation="[40, 20]"
         uri="pkg:/images/white_circle.png"
       />
 
@@ -48,43 +40,42 @@
 
 <ParallelAnimation id="animateCircles">
 
-<Animation id="c1Animation" easeFunction="linear" repeat="true" delay="0.1">
+<Animation id="c1Animation" easeFunction="inOutCubic" repeat="false" delay="0.2">
 <Vector2DFieldInterpolator
           id="c1translation"
           fieldToInterp="circleOne.translation"
-          key="[0.0, 0.20, 0.60, 0.80, 1.0]"
-          keyValue="[ [0.0, 20.0], [0.0, 0.0], [0.0, 0.0], [0.0, 20.0], [0.0, 20.0] ]"
+          key="[0.0, 1.0]"
+          keyValue="[ [0.0, 20.0], [0.0, 0.0] ]"
         />
 </Animation>
 
-<Animation id="c2Animation" easeFunction="linear" repeat="true" delay="0.2">
+<Animation id="c2Animation" easeFunction="inOutCubic" repeat="false" delay="0.4">
 <Vector2DFieldInterpolator
           id="c2translation"
           fieldToInterp="circleTwo.translation"
-          key="[0.0, 0.20, 0.60, 0.80, 1.0]"
-          keyValue="[ [20.0, 20.0], [20.0, 0.0], [20.0, 0.0], [20.0, 20.0], [20.0, 20.0] ]"
+          key="[0.0, 1.0]"
+          keyValue="[ [20.0, 20.0], [20.0, 0.0] ]"
         />
 </Animation>
 
-<Animation id="c3Animation" easeFunction="linear" repeat="true" delay="0.3">
+<Animation id="c3Animation" easeFunction="inOutCubic" repeat="false" delay="0.6">
 <Vector2DFieldInterpolator
           id="c3translation"
           fieldToInterp="circleThree.translation"
-          key="[0.0, 0.30, 0.60, 0.80, 1.0]"
-          keyValue="[ [40.0, 20.0], [40.0, 0.0], [40.0, 0.0], [40.0, 20.0], [40.0, 20.0] ]"
+          key="[0.0, 1.0]"
+          keyValue="[ [40.0, 20.0], [40.0, 0.0] ]"
         />
 </Animation>
 
 <Animation
         id="c1AnimationColor"
         easeFunction="linear"
-        repeat="true"
-        delay="0.1"
+        delay="0.2"
       >
 <ColorFieldInterpolator
           id="c1color"
-          key="[0.0, 0.5, 0.75, 1.0]"
-          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
+          key="[0.0, 0.5, 1.0]"
+          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF]"
           fieldToInterp="circleOne.blendColor"
         />
 </Animation>
@@ -92,13 +83,12 @@
 <Animation
         id="c2AnimationColor"
         easeFunction="linear"
-        repeat="true"
-        delay="0.2"
+        delay="0.4"
       >
 <ColorFieldInterpolator
           id="c2color"
-          key="[0.0, 0.5, 0.75, 1.0]"
-          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
+          key="[0.0, 0.5, 1.0]"
+          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF ]"
           fieldToInterp="circleTwo.blendColor"
         />
 </Animation>
@@ -106,13 +96,12 @@
 <Animation
         id="c3AnimationColor"
         easeFunction="linear"
-        repeat="true"
-        delay="0.3"
+        delay="0.6"
       >
 <ColorFieldInterpolator
           id="c3color"
-          key="[0.0, 0.5, 0.75, 1.0]"
-          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF, 0xFF0000FF]"
+          key="[0.0, 0.5, 1.0]"
+          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF ]"
           fieldToInterp="circleThree.blendColor"
         />
 </Animation>
@@ -120,5 +109,10 @@
 </ParallelAnimation>
 
 </children>
+
+<script
+    type="text/brightscript"
+    uri="pkg:/components/LoadingAnimation/LoadingAnimation.brs"
+  />
 
 </component>

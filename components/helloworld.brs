@@ -55,11 +55,11 @@ function onKeyEvent(key as string, press as boolean) as boolean
             handled = true
         else if (key = "options")
             if m.loadingAnimation.control = "start"
-               m.loadingAnimation.control = "stop"
-            else  m.loadingAnimation.control = "start"
+                m.loadingAnimation.control = "stop"
+            else m.loadingAnimation.control = "start"
             end if
             handled = true
-         end if
+        end if
         finish()
     end if
     return handled
