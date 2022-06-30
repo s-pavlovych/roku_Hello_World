@@ -18,7 +18,7 @@
         id="circleOne"
         width="20"
         height="20"
-        translation="[0, 20]"
+        translation="[0, 30]"
         uri="pkg:/images/white_circle.png"
       />
 
@@ -26,7 +26,7 @@
         id="circleTwo"
         width="20"
         height="20"
-        translation="[20, 20]"
+        translation="[20, 30]"
         uri="pkg:/images/white_circle.png"
       />
           
@@ -34,7 +34,7 @@
         id="circleThree"
         width="20"
         height="20"
-        translation="[40, 20]"
+        translation="[40, 30]"
         uri="pkg:/images/white_circle.png"
       />
 
@@ -47,7 +47,7 @@
           id="c1translation"
           fieldToInterp="circleOne.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [0.0, 20.0], [0.0, 0.0] ]"
+          keyValue="[ [0.0, 30.0], [0.0, 0.0] ]"
         />
 </Animation>
 
@@ -56,7 +56,7 @@
           id="c2translation"
           fieldToInterp="circleTwo.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [20.0, 20.0], [20.0, 0.0] ]"
+          keyValue="[ [20.0, 30.0], [20.0, 0.0] ]"
         />
 </Animation>
 
@@ -65,7 +65,7 @@
           id="c3translation"
           fieldToInterp="circleThree.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [40.0, 20.0], [40.0, 0.0] ]"
+          keyValue="[ [40.0, 30.0], [40.0, 0.0] ]"
         />
 </Animation>
 
