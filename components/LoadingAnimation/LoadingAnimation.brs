@@ -10,6 +10,7 @@ function _initVars()
    m.animationColor1 = m.top.FindNode("c1AnimationColor")
    m.animationColor2 = m.top.FindNode("c2AnimationColor")
    m.animationColor3 = m.top.FindNode("c3AnimationColor")
+   m.top.ObserveField("switch", "switcher")
    m.animationColor3.ObserveField("state", "repeatColors")
    m.animation3.ObserveField("state", "repeat")
 end function
@@ -21,7 +22,7 @@ sub setColorDuration()
 end sub
 
 sub repeat()
-   if m.animation3.state = "stopped"
+   if m.animation3.state = "stopped" and  m.top.control = "start"
       if m.top.reverse = false
          m.top.reverse = true
          m.top.control = "start"
@@ -33,7 +34,7 @@ sub repeat()
 end sub
 
 sub repeatColors()
-   if m.animationColor3.state = "stopped"
+   if m.animationColor3.state = "stopped" and m.top.control = "start"
       if m.top.colorReverse = false
          m.top.colorReverse = true
          m.top.colorsControl = "start"
@@ -44,9 +45,13 @@ sub repeatColors()
    end if
 end sub
 
-sub hide()
-   if m.top.control = "stop"
-      m.top.visible = "false"
-   else m.top.visible = "true"
+sub switcher()
+   if m.top.switch = false
+      m.top.control = "stop"
+      m.top.colorsControl = "stop"
+      m.top.visible = false
+   else m.top.control = "start"
+      m.top.colorsControl = "start"
+      m.top.visible = true
    end if
 end sub

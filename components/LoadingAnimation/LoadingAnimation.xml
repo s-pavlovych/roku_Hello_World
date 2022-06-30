@@ -6,6 +6,8 @@
     <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/>
     <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>
     <field id="colorReverse" type="boolean" value="false" alias ="c1color.reverse, c2color.reverse, c3color.reverse"/>
+    <field id="switch" type="boolean" value="true"/>
+
 </interface>
 
 <children>
