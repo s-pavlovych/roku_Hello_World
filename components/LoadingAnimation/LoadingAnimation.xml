@@ -2,11 +2,13 @@
 
 <interface>
     <field id="duration" type="time" value="1" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
-    <field id="control" type="string" value="start" alias ="c1Animation.control, c2Animation.control, c3Animation.control"/>
-    <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/>
+    <field id="control" type="string" value="stop" alias ="animateCircles.control"/>
+    <!-- <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/> -->
     <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>
     <field id="colorReverse" type="boolean" value="false" alias ="c1color.reverse, c2color.reverse, c3color.reverse"/>
-    <field id="switch" type="boolean" value="true"/>
+    <field id="switch" type="boolean" value="true" alwaysNotify= "true" />
+    <field id="isAnimated" type="boolean"  onChange= "printer" alwaysNotify= "true"/>
+
 
 </interface>
 
@@ -42,7 +44,7 @@
 
 <ParallelAnimation id="animateCircles">
 
-<Animation id="c1Animation" easeFunction="inOutQuad" repeat="false" delay="0">
+<Animation id="c1Animation" easeFunction="inOutQuad" repeat="false" control= "start">
 <Vector2DFieldInterpolator
           id="c1translation"
           fieldToInterp="circleOne.translation"
@@ -51,7 +53,7 @@
         />
 </Animation>
 
-<Animation id="c2Animation" easeFunction="inOutQuad" repeat="false" delay="0.1">
+<Animation id="c2Animation" easeFunction="inOutQuad" repeat="false" control= "start" delay="0.1">
 <Vector2DFieldInterpolator
           id="c2translation"
           fieldToInterp="circleTwo.translation"
@@ -60,7 +62,7 @@
         />
 </Animation>
 
-<Animation id="c3Animation" easeFunction="inOutQuad" repeat="false" delay="0.2">
+<Animation id="c3Animation" easeFunction="inOutQuad" repeat="false" control="start" delay= "0.2">
 <Vector2DFieldInterpolator
           id="c3translation"
           fieldToInterp="circleThree.translation"
@@ -77,7 +79,7 @@
 <ColorFieldInterpolator
           id="c1color"
           key="[0.0, 0.5, 1.0]"
-          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF]"
+          keyValue="[ 0xFF0000FF, 0x00FF00FF, 0x0000FFFF ]"
           fieldToInterp="circleOne.blendColor"
         />
 </Animation>

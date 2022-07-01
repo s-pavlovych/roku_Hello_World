@@ -11,9 +11,9 @@
       	/>
       <LoadingAnimation
       id="myAnimation"
-      duration= "0.4"
+      duration= "2"
       translation= "[100,100]"
-      control= "start"
+      control= "stop"
         />
       <Label 
         id="counter" 

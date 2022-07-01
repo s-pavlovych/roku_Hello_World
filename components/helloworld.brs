@@ -54,10 +54,7 @@ function onKeyEvent(key as string, press as boolean) as boolean
             m.posterTranslation [0] += 5
             handled = true
         else if (key = "options")
-            if m.loadingAnimation.switch = false
-                m.loadingAnimation.switch = true
-            else m.loadingAnimation.switch = false
-            end if
+            m.loadingAnimation.switch = not m.loadingAnimation.switch      
             handled = true
         end if
         finish()
