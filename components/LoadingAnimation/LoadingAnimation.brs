@@ -23,9 +23,9 @@ function _initVars()
 end function
 
 sub setColorDuration()
-   m.c1AnimationColor.duration = (m.top.duration) * 4
-   m.c2AnimationColor.duration = (m.top.duration) * 4
-   m.c3AnimationColor.duration = (m.top.duration) * 4
+   m.c1AnimationColor.duration = (m.top.duration) * 2
+   m.c2AnimationColor.duration = (m.top.duration) * 2
+   m.c3AnimationColor.duration = (m.top.duration) * 2
 end sub
 
 sub repeat1(event)
@@ -46,23 +46,17 @@ end sub
 
 sub repeat3(event)
    state = event.getData()
-   ? state
    isAnimated(state)
    if state = "stopped"
       repeater(m.c3Animation, m.c3translation)
    end if
-   ? state
 end sub
 
-sub repeatColors()
-   if m.c3AnimationColor.state = "stopped" and m.top.control = "start"
-      if m.top.colorReverse = false
-         m.top.colorReverse = true
-         m.top.colorsControl = "start"
-      else if m.top.colorReverse = true
-         m.top.colorReverse = false
-         m.top.colorsControl = "start"
-      end if
+sub repeatColors(event)
+   state = event.getData()
+   if state = "stopped"
+      m.top.colorReverse = not m.top.colorReverse
+      m.top.colorsControl = "start"
    end if
 end sub
 
@@ -72,7 +66,7 @@ sub switcher()
       m.top.colorsControl = "start"
       m.animateCircles.control = "start"
       ' m.top.visible = true
-   else 
+   else
       m.animateCircles.control = "stop"
       m.top.colorsControl = "stop"
       ' m.top.visible = false
@@ -90,8 +84,8 @@ end sub
 sub repeater(animation as object, interpolator as object)
    if m.animateCircles.control = "start"
       animation.delay = 0
-   interpolator.reverse = not interpolator.reverse
-   animation.control = "start"
+      interpolator.reverse = not interpolator.reverse
+      animation.control = "start"
    end if
 end sub
 
@@ -99,7 +93,6 @@ sub printer()
    ' ?m.top.isAnimated
 end sub
 
-   
 sub valuesToDefault()
    m.c1Animation.delay = 0
    m.c2Animation.delay = 0.1

@@ -11,7 +11,7 @@
       	/>
       <LoadingAnimation
       id="myAnimation"
-      duration= "2"
+      duration= "0.5"
       translation= "[100,100]"
       control= "stop"
         />
