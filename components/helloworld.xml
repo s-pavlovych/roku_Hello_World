@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <component name="HelloWorld" extends="Scene" > 
 
 	<children>
@@ -9,9 +8,14 @@
       	height="720" 
       	horizAlign="center"
       	vertAlign="center"
-        count="0"
       	/>
-        <Label 
+      <LoadingAnimation
+      id="myAnimation"
+      duration= "0.5"
+      translation= "[100,100]"
+      control= "stop"
+        />
+      <Label 
         id="counter" 
       	text="Press the OK button"
       	width="1280" 
@@ -19,7 +23,7 @@
       	horizAlign="center"
       	vertAlign="bottom"
       	/>
-        <Poster
+      <Poster
         id="testPoster"
         uri="pkg:/images/channel-poster_sd.png"
         width="0.0"
@@ -27,7 +31,7 @@
         visible="false"
         translation="[154,154]"
         />
-        <Rectangle
+      <Rectangle
         id="testRectangle"
         color="0x880088FF"
         width="20"
@@ -35,10 +39,7 @@
         visible="false"
         translation="[124,124]"
         />
-
-
     </children>
-
 
 <script type="text/brightscript" uri="pkg:/components/helloworld.brs" />
 

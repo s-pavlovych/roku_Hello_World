@@ -8,7 +8,6 @@
             "name": "BrightScript Debug: Launch",
             "type": "brightscript",
             "request": "launch",
-            "host": "192.168.88.85",
             "password": "padev",
             "rootDir": "${workspaceFolder}"
         }
