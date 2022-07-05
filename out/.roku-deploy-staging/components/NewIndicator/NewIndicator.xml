@@ -1,0 +1,8 @@
+<component name="NewIndicator" extends="Group">
+    <script type="text/brightscript" uri="NewIndicator.brs" />
+    
+    <children>
+<Poster id="myPoster"
+    opacity="1.0"
+    uri="pkg:/images/myImage.jpg" />    </children>
+</component>
