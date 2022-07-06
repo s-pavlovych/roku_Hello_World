@@ -1,0 +1,32 @@
+<component name="CustomTextEditBox" extends="Group">
+
+<interface>
+    <field id="id" type="string" />
+    <field id="width" type="float" alias="bounds.width" onChange="setBackgroundWidth" />
+    <field id="height" type="float" alias="bounds.height" onChange="setBackgroundHeight" />
+    <field id="scaleIndex" type="float" value="0.9" />
+    <field id="hintText" type="integer" value="text" alias="textEditBox.hintText" />
+    <field id="secureMode" type="boolean" alias="textEditBox.secureMode" />
+    <!-- clearOnDown -->
+</interface>
+
+<children>
+    <Rectangle
+    id="bounds"
+    color="00FFFFFF "
+    blendingEnabled= "true">
+    <!-- transparent and blended color -->
+    <Poster
+    id="background"
+    uri="pkg:/images/textBox.png"
+    />
+    <TextEditBox
+    id="textEditBox"
+    textColor="#000000"   
+    backgroundUri= "fake"
+    />
+    <!-- no background image -->
+    </Rectangle>
+</children>
+<script type="text/brightscript" uri="pkg:/components/CustomTextEditBox/CustomTextEditBox.brs" />
+</component>

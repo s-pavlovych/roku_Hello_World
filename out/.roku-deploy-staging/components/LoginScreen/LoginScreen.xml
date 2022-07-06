@@ -1,0 +1,36 @@
+<component name="LoginScreen" extends="Group" initialFocus="group"> 
+
+<children>
+<FocusableLayoutGroup
+    id="group"
+	translation="[0, 0]"
+	horizAlignment="center"
+	vertAlignment = "center"
+	itemSpacings= "[10,10]">
+	<CustomTextEditBox
+	id="login"
+	width="300"
+	height="50"
+	hintText="Login"
+	focusable="true"
+	/>
+	<CustomTextEditBox
+	id="Password"
+	width="300"
+	height="50"
+	hintText="password"
+	focusable="true"
+	/>
+	<Button
+    id = "exampleButton"
+    text = "Enter"
+	
+    showFocusFootprint = "true" 
+	focusable="true"
+	/>
+</FocusableLayoutGroup>
+</children>
+
+<script type="text/brightscript" uri="pkg:/components/LoginScreen/LoginScreen.brs" />
+
+</component>
