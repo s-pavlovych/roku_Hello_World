@@ -6,8 +6,8 @@
     <field id="height" type="float" alias="bounds.height" onChange="setBackgroundHeight" />
     <field id="scaleIndex" type="float" value="0.9" />
     <field id="hintText" type="integer" value="text" alias="textEditBox.hintText" />
-    <field id="secureMode" type="boolean" alias="textEditBox.secureMode" />
-    <!-- clearOnDown -->
+    <field id="secureMode" type="boolean" alias="textEditBox.secureMode"/>
+    <field id="text" type="string" alias="textEditBox.text" />
 </interface>
 
 <children>

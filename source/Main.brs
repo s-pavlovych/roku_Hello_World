@@ -4,9 +4,8 @@ sub Main()
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
 
-    scene = screen.CreateScene("HelloWorld")
-    screen.show()
-    scene.setFocus(true)
+    scene = screen.CreateScene("MainScene")
+    screen.show()'vscode_rale_tracker_entry
 
     while(true)
         msg = wait(0, m.port)

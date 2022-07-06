@@ -1,6 +1,12 @@
 <component name="LoginScreen" extends="Group" initialFocus="group"> 
 
 <children>
+<Poster
+id="logo" 
+uri="pkg:/images/channel-poster_hd.png"
+	width="200"
+	height="140"
+/>
 <FocusableLayoutGroup
     id="group"
 	translation="[0, 0]"
@@ -15,16 +21,15 @@
 	focusable="true"
 	/>
 	<CustomTextEditBox
-	id="Password"
+	id="password"
 	width="300"
 	height="50"
-	hintText="password"
+	hintText="Password"
 	focusable="true"
 	/>
 	<Button
-    id = "exampleButton"
+    id = "enter"
     text = "Enter"
-	
     showFocusFootprint = "true" 
 	focusable="true"
 	/>

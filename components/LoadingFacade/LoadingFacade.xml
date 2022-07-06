@@ -1,0 +1,22 @@
+<component name="LoadingFacade" extends="Group">
+<interface>
+    <field id="isShown" type="boolean" value="true" />
+</interface>
+<children>
+<Rectangle
+id="background"
+width="1920"
+height="1080"
+blendingEnabled="true"
+opacity= "0.8"
+color="#0000FF "
+ 
+/>
+<LoadingAnimation
+id= "loading"
+control="start"
+/>
+
+</children>
+    <script type="text/brightscript" uri="LoadingFacade.brs" />    
+</component>
