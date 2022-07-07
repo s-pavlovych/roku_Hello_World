@@ -7,7 +7,9 @@
     <field id="scaleIndex" type="float" value="0.9" />
     <field id="hintText" type="integer" value="text" alias="textEditBox.hintText" />
     <field id="secureMode" type="boolean" alias="textEditBox.secureMode"/>
-    <field id="text" type="string" alias="textEditBox.text" />
+    <field id="text" type="string" alias="textEditBox.text"/>
+    <field id="hintTextColor" type="integer" alias="textEditBox.hintTextColor" />
+    <field id="textColor" type="color" alias="textEditBox.textColor" />
 </interface>
 
 <children>
@@ -19,11 +21,14 @@
     <Poster
     id="background"
     uri="pkg:/images/textBox.png"
+    opacity = "0.6"
     />
     <TextEditBox
     id="textEditBox"
-    textColor="#000000"   
-    backgroundUri= "fake"
+    textColor="#616161"   
+    backgroundUri= "none"
+    hintTextColor= "##ffffff"
+    leadingEllipsis= "true"
     />
     <!-- no background image -->
     </Rectangle>

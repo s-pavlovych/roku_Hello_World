@@ -10,11 +10,10 @@ sub _initVars()
     m.password = m.top.findNode("password")
     m.enter = m.top.findNode("enter")
     m.logo = m.top.findNode("logo")
-    m.enter.ObserveField("buttonSelected", "loading")
 end sub
 
 sub setPosterTranslation()
-    centerX = (1280 /2) - (m.logo.width /2)
+    centerX = (1280 / 2) - (m.logo.width / 2)
     m.logo.translation = [centerX, 100]
 end sub
 
@@ -34,6 +33,9 @@ function onKeyEvent(key as string, press as boolean) as boolean
         else if m.password.hasFocus() = true
             keyboardOpen("password")
             handled = true
+        else if m.enter.hasFocus() = true
+            loading()
+            handled = true
         end if
     end if
     return handled
@@ -42,6 +44,7 @@ end function
 sub keyboardOpen(field as string)
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
     m.keyboard.title = field
+    m.keyboard.textEditBox.leadingEllipsis = "true"
     m.keyboard.message = ["Please, enter your " + field + " here"]
     m.keyboard.buttons = ["OK", "Cancel"]
     m.keyboard.setFocus(true)
@@ -53,14 +56,16 @@ sub keyboardClose(event)
     if key = 0
         if m.keyboard.title = "login"
             m.login.text = m.keyboard.text
+            m.login.textColor = "#000000"
         else
             m.password.text = m.keyboard.text
+            m.password.textColor = "#000000"
         end if
-    m.top.removeChild(m.keyboard)
-    m.group.setFocus(true)
+        m.top.removeChild(m.keyboard)
+        m.group.setFocus(true)
     else
-    m.top.removeChild(m.keyboard)
-    m.group.setFocus(true)
+        m.top.removeChild(m.keyboard)
+        m.group.setFocus(true)
     end if
 end sub
 

@@ -1,11 +1,11 @@
-<component name="LoginScreen" extends="Group" initialFocus="group"> 
+<component name="LoginScreen" extends="Group" initialFocus="login"> 
 
 <children>
 <Poster
 id="logo" 
 uri="pkg:/images/channel-poster_hd.png"
-	width="200"
-	height="140"
+width="200"
+height="140"
 />
 <FocusableLayoutGroup
     id="group"
@@ -26,12 +26,16 @@ uri="pkg:/images/channel-poster_hd.png"
 	height="50"
 	hintText="Password"
 	focusable="true"
+	secureMode = "true"
 	/>
-	<Button
+	<AnimatedButton
+	height="50"
+    width= "100"
     id = "enter"
     text = "Enter"
-    showFocusFootprint = "true" 
 	focusable="true"
+	footprintUri= "pkg:/images/button.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
 	/>
 </FocusableLayoutGroup>
 </children>

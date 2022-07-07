@@ -13,8 +13,10 @@ sub focused()
     state = m.top.isInFocusChain()
     if state = true
         m.background.scale = [1.1, 1.1]
+        m.background.opacity = 1
     else
         m.background.scale = [1, 1]
+        m.background.opacity = 0.6
     end if
 end sub
 

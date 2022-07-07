@@ -1,0 +1,48 @@
+<component name="SecondIndicator" extends="Group">
+    <script type="text/brightscript" uri="SecondIndicator.brs" />
+    
+<children>
+<Poster
+        id="circleOne"
+        width="20"
+        height="20"
+        translation="[0, 30]"
+        uri="pkg:/images/white_circle.9.png"
+        scaleRotateCenter = "[100, 100]"
+      />
+
+<Poster
+        id="circleTwo"
+        width="20"
+        height="20"
+        translation="[0, 30]"
+        uri="pkg:/images/white_circle.9.png"
+      />
+          
+<Poster
+        id="circleThree"
+        width="20"
+        height="20"
+        translation="[0, 30]"
+        uri="pkg:/images/white_circle.9.png"
+      />
+
+<Animation id="c1Animation" duration= "5" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
+<!-- <Vector2DFieldInterpolator
+          id="c1translation"
+          fieldToInterp="circleOne.translation"
+          key="[0.0, 1.0]"
+          keyValue="[ [0.0, 30.0], [100.0, 30.0] ]"
+        /> -->
+<FloatFieldInterpolator
+          id="c1translation"
+          fieldToInterp="circleOne.rotation"
+          key="[0.0, 1.0]"
+          keyValue="[ [0.0], [0.45] ]"
+        />
+</Animation>
+
+
+
+</children>
+</component>
