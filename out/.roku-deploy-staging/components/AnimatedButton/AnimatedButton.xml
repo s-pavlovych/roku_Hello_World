@@ -1,0 +1,35 @@
+<component name="AnimatedButton" extends="Group">
+<interface>
+    <field id="text" type="string" alias="text.text" />
+    <field id="color" type="color" value="#000000" />
+    <field id="colorInFocus" type="color" value="#ffffff" />
+    <field id="footprintUri" type="string" onChange= "setFootprint" />
+    <field id="footprintUriInFocus" type="string" />
+    <field id="height" type="integer" alias="footprint.height, text.height" />
+    <field id="width" type="integer" alias="footprint.width, text.width" />
+</interface>
+
+<children>
+    <Poster
+    id="footprint"
+    />
+    <Label
+    id="text"
+    horizAlign= "center"   
+    vertAlign= "center"   
+    /> 
+    <Animation id="footAnimation" duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
+    <FloatFieldInterpolator
+    id="fade"
+    fieldToInterp="footprint.opacity"
+    key="[0.0, 1.0]"
+    keyValue="[ [1.0], [0.6] ]"
+    />
+    </Animation>
+</children>
+
+
+
+<script type="text/brightscript" uri="AnimatedButton.brs" />
+    
+</component>
