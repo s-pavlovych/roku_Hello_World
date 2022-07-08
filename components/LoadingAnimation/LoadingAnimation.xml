@@ -1,7 +1,7 @@
 <component name="LoadingAnimation" extends="Group">
 
 <interface>
-    <field id="duration" type="time" value="0.5" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
+    <field id="duration" type="time" value="1" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
     <field id="control" type="string" value="stop" alias ="animateCircles.control"/>
     <!-- <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/> -->
     <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>

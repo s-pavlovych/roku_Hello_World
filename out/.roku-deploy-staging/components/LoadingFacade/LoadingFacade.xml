@@ -15,6 +15,7 @@ color="#0000FF "
 <LoadingAnimation
 id= "loading"
 control="start"
+duration = "0.5"
 />
 <Animation id="backAnimation" duration = "2" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
     <FloatFieldInterpolator
