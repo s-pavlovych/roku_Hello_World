@@ -8,7 +8,7 @@ id="background"
 width="1920"
 height="1080"
 blendingEnabled="true"
-opacity= "0.8"
+opacity= "0"
 color="#0000FF "
  
 />
@@ -16,7 +16,7 @@ color="#0000FF "
 id= "loading"
 control="start"
 />
-<Animation id="backAnimation" duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
+<Animation id="backAnimation" duration = "2" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
     <FloatFieldInterpolator
         id="fade"
         fieldToInterp="background.opacity"

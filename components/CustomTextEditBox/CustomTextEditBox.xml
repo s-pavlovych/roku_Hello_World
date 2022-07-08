@@ -27,7 +27,6 @@
     id="textEditBox"
     textColor="#616161"   
     backgroundUri= "none"
-    hintTextColor= "##ffffff"
     leadingEllipsis= "true"
     />
     <!-- no background image -->

@@ -28,10 +28,10 @@ function onKeyEvent(key as string, press as boolean) as boolean
     handled = false
     if press and key = "OK"
         if m.login.hasFocus() = true
-            keyboardOpen("login")
+            keyboardOpen(m.login)
             handled = true
         else if m.password.hasFocus() = true
-            keyboardOpen("password")
+            keyboardOpen(m.password)
             handled = true
         else if m.enter.hasFocus() = true
             loading()
@@ -41,32 +41,32 @@ function onKeyEvent(key as string, press as boolean) as boolean
     return handled
 end function
 
-sub keyboardOpen(field as string)
+sub keyboardOpen(field as object)
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
-    m.keyboard.title = field
+    m.keyboard.title = field.hintText
     m.keyboard.textEditBox.leadingEllipsis = "true"
-    m.keyboard.message = ["Please, enter your " + field + " here"]
+    m.keyboard.text = field.text 
+    m.keyboard.message = ["Please, enter your " + field.id + " here"]
     m.keyboard.buttons = ["OK", "Cancel"]
     m.keyboard.setFocus(true)
     m.keyboard.ObserveField("buttonSelected", "keyboardClose")
+    m.keyboard.ObserveField("wasClosed", "keyboardClose")
+    ? m.keyboard.wasClosed
 end sub
 
 sub keyboardClose(event)
     key = event.getData()
     if key = 0
-        if m.keyboard.title = "login"
+        if m.keyboard.title = m.login.hintText
             m.login.text = m.keyboard.text
             m.login.textColor = "#000000"
         else
             m.password.text = m.keyboard.text
             m.password.textColor = "#000000"
         end if
-        m.top.removeChild(m.keyboard)
-        m.group.setFocus(true)
-    else
-        m.top.removeChild(m.keyboard)
-        m.group.setFocus(true)
     end if
+    m.top.removeChild(m.keyboard)
+    m.group.setFocus(true)
 end sub
 
 sub loading()
