@@ -22,6 +22,7 @@
         height="20"
         translation="[0, 30]"
         uri="pkg:/images/white_circle.png"
+        blendColor = "0xFF0000FF"
       />
 
 <Poster
@@ -30,6 +31,7 @@
         height="20"
         translation="[20, 30]"
         uri="pkg:/images/white_circle.png"
+        blendColor = "0xFF0000FF"
       />
           
 <Poster
@@ -38,6 +40,7 @@
         height="20"
         translation="[40, 30]"
         uri="pkg:/images/white_circle.png"
+        blendColor = "0xFF0000FF"
       />
 
 </Group>

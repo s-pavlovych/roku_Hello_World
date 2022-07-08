@@ -10,6 +10,9 @@ sub _initVars()
     m.password = m.top.findNode("password")
     m.enter = m.top.findNode("enter")
     m.logo = m.top.findNode("logo")
+    m.login.observeField("isSelected", "keyboardOpen")
+    m.password.observeField("isSelected", "keyboardOpen")
+    m.enter.observeField("isSelected", "loading")
 end sub
 
 sub setPosterTranslation()
@@ -23,25 +26,8 @@ sub setGroupTranslation()
     m.group.translation = [centerX, centerY]
 end sub
 
-function onKeyEvent(key as string, press as boolean) as boolean
-    ? "LoginScreen function onKeyEvent("key" as string, "press" as boolean) as boolean"
-    handled = false
-    if press and key = "OK"
-        if m.login.hasFocus() = true
-            keyboardOpen(m.login)
-            handled = true
-        else if m.password.hasFocus() = true
-            keyboardOpen(m.password)
-            handled = true
-        else if m.enter.hasFocus() = true
-            loading()
-            handled = true
-        end if
-    end if
-    return handled
-end function
-
-sub keyboardOpen(field as object)
+sub keyboardOpen(event)
+    field = event.getRoSGNode()
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
     m.keyboard.title = field.hintText
     m.keyboard.textEditBox.leadingEllipsis = "true"
@@ -51,7 +37,6 @@ sub keyboardOpen(field as object)
     m.keyboard.setFocus(true)
     m.keyboard.ObserveField("buttonSelected", "keyboardClose")
     m.keyboard.ObserveField("wasClosed", "keyboardClose")
-    ? m.keyboard.wasClosed
 end sub
 
 sub keyboardClose(event)
@@ -71,12 +56,11 @@ end sub
 
 sub loading()
     m.loadingScreen = m.top.createChild("LoadingFacade")
-    m.loadingScreen.setFocus(true)
     m.loadingScreen.ObserveField("isShown", "success")
+    m.loadingScreen.setFocus(true)
 end sub
 
 sub success(event)
-    x = event.getData()
     m.top.removeChild(m.loadingScreen)
     m.group.setFocus(true)
 end sub

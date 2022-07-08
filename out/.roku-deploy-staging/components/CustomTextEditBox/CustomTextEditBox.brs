@@ -54,3 +54,12 @@ end sub
 sub setScaleRotateCenter()
     m.background.scaleRotateCenter = [(m.background.width/2), (m.background.height/2)]
 end sub
+
+function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false
+    if press and key = "OK"
+        m.top.isSelected = not m.top.isSelected
+        handled = true
+    end if
+    return handled
+end function

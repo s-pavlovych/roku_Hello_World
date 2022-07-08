@@ -1,4 +1,4 @@
-<component name="LoginScreen" extends="Group" initialFocus="login"> 
+<component name="LoginScreen" extends="Group" initialFocus="group"> 
 
 <children>
 <Poster
@@ -34,7 +34,7 @@ height="140"
     id = "enter"
     text = "Enter"
 	focusable="true"
-	footprintUri= "pkg:/images/button.png"
+	footprintUri= "pkg:/images/textBox.png"
 	footprintUriInFocus="pkg:/images/buttonFocus.png"
 	/>
 </FocusableLayoutGroup>

@@ -7,6 +7,7 @@
     <field id="footprintUriInFocus" type="string" />
     <field id="height" type="integer" alias="footprint.height, text.height" />
     <field id="width" type="integer" alias="footprint.width, text.width" />
+    <field id="isSelected" type="boolean" />
 </interface>
 
 <children>

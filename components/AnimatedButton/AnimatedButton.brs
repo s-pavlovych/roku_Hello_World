@@ -34,3 +34,12 @@ sub repeat(event)
         m.text.color = m.top.color
     end if
 end sub
+
+function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false
+    if press and key = "OK"
+        m.top.isSelected = not m.top.isSelected
+        handled = true
+    end if
+    return handled
+end function

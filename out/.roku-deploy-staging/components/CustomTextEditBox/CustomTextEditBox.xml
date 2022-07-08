@@ -10,13 +10,13 @@
     <field id="text" type="string" alias="textEditBox.text"/>
     <field id="hintTextColor" type="integer" alias="textEditBox.hintTextColor" />
     <field id="textColor" type="color" alias="textEditBox.textColor" />
+    <field id="isSelected" type="boolean" />
 </interface>
 
 <children>
     <Rectangle
     id="bounds"
-    color="00FFFFFF "
-    blendingEnabled= "true">
+    color="#0000000">
     <!-- transparent and blended color -->
     <Poster
     id="background"

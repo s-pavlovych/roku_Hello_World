@@ -9,8 +9,8 @@ sub _initVars()
 end sub
 
 sub centerAnimation()
-    centerX = (1280 - 60) / 2
-    centerY = (720 -30) / 2
+    centerX = (1280 - m.loading.width) / 2
+    centerY = (720 -m.loading.height) / 2
     m.loading.translation = [centerX, centerY]
 end sub
 
