@@ -16,13 +16,13 @@ sub _initVars()
 end sub
 
 sub setPosterTranslation()
-    centerX = (1280 / 2) - (m.logo.width / 2)
-    m.logo.translation = [centerX, 100]
+    centerX = (1920 / 2) - (m.logo.width / 2)
+    m.logo.translation = [centerX, 150]
 end sub
 
 sub setGroupTranslation()
-    centerX = 1280 / 2
-    centerY = 720 / 2
+    centerX = 1920 / 2
+    centerY = 1080 / 2
     m.group.translation = [centerX, centerY]
 end sub
 

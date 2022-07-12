@@ -3,13 +3,10 @@
 <interface>
     <field id="duration" type="time" value="1" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
     <field id="control" type="string" value="stop" alias ="animateCircles.control"/>
-    <!-- <field id="reverse" type="boolean" value="false" alias ="c1translation.reverse, c2translation.reverse, c3translation.reverse"/> -->
     <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>
     <field id="colorReverse" type="boolean" value="false" alias ="c1color.reverse, c2color.reverse, c3color.reverse"/>
     <field id="switch" type="boolean" value="true" alwaysNotify= "true" />
-    <field id="isAnimated" type="boolean"  onChange= "printer" alwaysNotify= "true"/>
-
-
+    <field id="Width" type="integer" />
 </interface>
 
 <children>
@@ -18,27 +15,27 @@
 
 <Poster
         id="circleOne"
-        width="20"
-        height="20"
-        translation="[0, 30]"
+        width="60"
+        height="60"
+        translation="[0, 60]"
         uri="pkg:/images/white_circle.png"
         blendColor = "0xFF0000FF"
       />
 
 <Poster
         id="circleTwo"
-        width="20"
-        height="20"
-        translation="[20, 30]"
+        width="60"
+        height="60"
+        translation="[60, 60]"
         uri="pkg:/images/white_circle.png"
         blendColor = "0xFF0000FF"
       />
           
 <Poster
         id="circleThree"
-        width="20"
-        height="20"
-        translation="[40, 30]"
+        width="60"
+        height="60"
+        translation="[120, 60]"
         uri="pkg:/images/white_circle.png"
         blendColor = "0xFF0000FF"
       />
@@ -52,7 +49,7 @@
           id="c1translation"
           fieldToInterp="circleOne.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [0.0, 30.0], [0.0, 0.0] ]"
+          keyValue="[ [0.0, 60.0], [0.0, 0.0] ]"
         />
 </Animation>
 
@@ -61,7 +58,7 @@
           id="c2translation"
           fieldToInterp="circleTwo.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [20.0, 30.0], [20.0, 0.0] ]"
+          keyValue="[ [60.0, 60.0], [60.0, 0.0] ]"
         />
 </Animation>
 
@@ -70,7 +67,7 @@
           id="c3translation"
           fieldToInterp="circleThree.translation"
           key="[0.0, 1.0]"
-          keyValue="[ [40.0, 30.0], [40.0, 0.0] ]"
+          keyValue="[ [120.0, 60.0], [120.0, 0.0] ]"
         />
 </Animation>
 

@@ -4,37 +4,37 @@
 <Poster
 id="logo" 
 uri="pkg:/images/channel-poster_hd.png"
-width="200"
-height="140"
+width="300"
+height="210"
 />
 <FocusableLayoutGroup
     id="group"
 	translation="[0, 0]"
 	horizAlignment="center"
 	vertAlignment = "center"
-	itemSpacings= "[10,10]">
+	itemSpacings= "[30,30]">
 	<CustomTextEditBox
 	id="login"
-	width="300"
-	height="50"
+	width="450"
+	height="90"
 	hintText="Login"
 	focusable="true"
 	/>
 	<CustomTextEditBox
 	id="password"
-	width="300"
-	height="50"
+	width="450"
+	height="90"
 	hintText="Password"
 	focusable="true"
 	secureMode = "true"
 	/>
 	<AnimatedButton
-	height="50"
-    width= "100"
+	height="90"
+    width= "150"
     id = "enter"
     text = "Enter"
 	focusable="true"
-	footprintUri= "pkg:/images/textBox.png"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
 	footprintUriInFocus="pkg:/images/buttonFocus.png"
 	/>
 </FocusableLayoutGroup>

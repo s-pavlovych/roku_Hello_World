@@ -1,11 +1,12 @@
 function init()
    _initVars()
-   ' valuesToDefault()
    setColorDuration()
+   setWidth()
 end function
 
 function _initVars()
    m.animateCircles = m.top.FindNode("animateCircles")
+   m.circleOne = m.top.FindNode("circleOne")
    m.c1Animation = m.top.FindNode("c1Animation")
    m.c2Animation = m.top.FindNode("c2Animation")
    m.c3Animation = m.top.FindNode("c3Animation")
@@ -89,8 +90,8 @@ sub repeater(animation as object, interpolator as object)
    end if
 end sub
 
-sub printer()
-   ' ?m.top.isAnimated
+sub setWidth()
+   m.top.width = m.circleOne.width*3
 end sub
 
 sub valuesToDefault()

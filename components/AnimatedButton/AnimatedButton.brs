@@ -22,9 +22,9 @@ sub repeat(event)
         m.fade.reverse = not m.fade.reverse
         m.footAnimation.control = "start"
     end if
- end sub
+end sub
 
- sub focused()
+sub focused()
     state = m.top.isInFocusChain()
     if state = true
         m.footprint.uri = m.top.footprintUriInFocus
