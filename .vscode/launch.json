@@ -10,6 +10,7 @@
             "request": "launch",
             "password": "padev",
             "rootDir": "${workspaceFolder}"
+            "injectRaleTrackerTask": true
         }
     ]
 }

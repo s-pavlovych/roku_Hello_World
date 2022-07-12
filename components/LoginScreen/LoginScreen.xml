@@ -1,0 +1,45 @@
+<component name="LoginScreen" extends="Group" initialFocus="group"> 
+
+<children>
+<Poster
+id="logo" 
+uri="pkg:/images/channel-poster_hd.png"
+width="300"
+height="210"
+/>
+<FocusableLayoutGroup
+    id="group"
+	translation="[0, 0]"
+	horizAlignment="center"
+	vertAlignment = "center"
+	itemSpacings= "[30,30]">
+	<CustomTextEditBox
+	id="login"
+	width="450"
+	height="90"
+	hintText="Login"
+	focusable="true"
+	/>
+	<CustomTextEditBox
+	id="password"
+	width="450"
+	height="90"
+	hintText="Password"
+	focusable="true"
+	secureMode = "true"
+	/>
+	<AnimatedButton
+	height="90"
+    width= "150"
+    id = "enter"
+    text = "Enter"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+</FocusableLayoutGroup>
+</children>
+
+<script type="text/brightscript" uri="pkg:/components/LoginScreen/LoginScreen.brs" />
+
+</component>
