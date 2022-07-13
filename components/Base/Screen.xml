@@ -1,0 +1,13 @@
+<component name="Screen" extends="Group">
+    <interface>
+        <field id="backgroundUrl" type="string" alias="background.uri" value="pkg:/images/someBackground.jpg"/>
+        <field id="screenIndex" type="integer" value="0"/>
+        <field id="backTapped" type="bool" alwaysNotify="true"/>
+    </interface>
+
+    <children>
+        <Poster id="background" uri="" width="1920" height="1080"/>
+      </children>
+    <script type="text/brightscript" uri="Screen.brs" />
+    
+</component>
