@@ -1,7 +1,14 @@
 <component name="MainScene" extends="Scene">
+    <interface>
+        <function name="showScreen"/>
+    </interface>
 <children>
-    <LoginScreen
-    id="loginFacade"/>
+    <TestScreen
+    id = "firstScreen"
+    screenIndex = "1"
+    text = "I am 1"/>
+    <ScreenManager
+    id="screenManager"/>
 </children>
 
 <script type="text/brightscript" uri="MainScene.brs" />

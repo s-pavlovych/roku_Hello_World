@@ -1,0 +1,11 @@
+<component name="ScreenManager" extends="Group">
+
+    <interface>
+        <function name="showScreen"/>
+        <function name="popScreen"/>
+    </interface>
+
+
+    <script type="text/brightscript" uri="ScreenManager.brs" />
+    
+</component>

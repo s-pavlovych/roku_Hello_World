@@ -1,4 +1,13 @@
 sub init()
-    m.loginFacade= m.top.findNode("loginFacade")
-    m.loginFacade.setFocus(true)
+    initVars()
 end sub
+
+sub initVars()
+    m.screenManager = m.top.findNode("screenManager")
+    m.firstScreen = m.top.findNode("firstScreen")
+    m.firstScreen.setFocus(true)
+end sub
+
+function showScreen(screen)
+    m.screenManager.callFunc("showScreen", screen)
+  end function
