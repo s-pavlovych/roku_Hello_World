@@ -9,16 +9,17 @@ end sub
 
 function showScreen(screen as object, animated as boolean)
     m.top.animation = "finish"
+    ? "screen opacity" screen.opacity
     m.top.appendChild(screen)
     screen.observeField("backTapped", "fadeScreen")
-    screen.observeField("opacity", "popScreen")
     screen.setFocus(true)
+    ? "created" screen.id
+    ? "screen opacity" screen.opacity
     if animated = true
         m.top.reverse = false
         m.top.fieldToInterp = screen.id + ".opacity"
-        ? m.top.fieldToInterp
-        ? m.top.animation
         m.top.animation = "start"
+        ? "animated" m.top.fieldToInterp
     else
         screen.opacity = 1
     end if
