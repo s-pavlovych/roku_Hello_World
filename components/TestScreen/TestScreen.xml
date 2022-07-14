@@ -1,4 +1,4 @@
-<component name="TestScreen" extends="Screen">
+<component name="TestScreen" extends="Screen" initialFocus="enter">
 <interface>
     <field id="text" type="string" value="" alias="testLabel.text" />
 </interface>

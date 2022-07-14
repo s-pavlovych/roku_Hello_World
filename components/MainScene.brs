@@ -8,6 +8,6 @@ sub initVars()
     m.firstScreen.setFocus(true)
 end sub
 
-function showScreen(screen)
-    m.screenManager.callFunc("showScreen", screen)
+function showScreen(screen, animated as boolean)
+    m.screenManager.callFunc("showScreen", screen, animated)
   end function

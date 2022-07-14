@@ -10,7 +10,6 @@ height="1080"
 blendingEnabled="true"
 opacity= "0"
 color="#0000FF "
- 
 />
 <LoadingAnimation
 id= "loading"

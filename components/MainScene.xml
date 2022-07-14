@@ -2,15 +2,15 @@
     <interface>
         <function name="showScreen"/>
     </interface>
-<children>
-    <TestScreen
+    <children>
+        <ScreenManager id="screenManager">
+            <TestScreen
     id = "firstScreen"
     screenIndex = "1"
     text = "I am 1"/>
-    <ScreenManager
-    id="screenManager"/>
-</children>
+        </ScreenManager>
+    </children>
 
-<script type="text/brightscript" uri="MainScene.brs" />
+    <script type="text/brightscript" uri="MainScene.brs" />
 
 </component>
