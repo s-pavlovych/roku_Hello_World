@@ -1,4 +1,4 @@
-sub _init()
+sub init()
     initVars()
 end sub
 

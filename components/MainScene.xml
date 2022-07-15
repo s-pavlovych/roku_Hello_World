@@ -8,6 +8,9 @@
     id = "firstScreen"
     screenIndex = "1"
     text = "I am 1"/>
+    <UrlTask
+    id = "urlTask"
+    />
         </ScreenManager>
     </children>
 
