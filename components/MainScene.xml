@@ -1,16 +1,9 @@
 <component name="MainScene" extends="Scene">
     <interface>
-        <function name="showScreen"/>
+        <function name="showScreen" />
     </interface>
     <children>
         <ScreenManager id="screenManager">
-            <TestScreen
-    id = "firstScreen"
-    screenIndex = "1"
-    text = "I am 1"/>
-    <UrlTask
-    id = "urlTask"
-    />
         </ScreenManager>
     </children>
 

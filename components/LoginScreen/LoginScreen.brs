@@ -12,7 +12,7 @@ sub _initVars()
     m.logo = m.top.findNode("logo")
     m.login.observeField("isSelected", "keyboardOpen")
     m.password.observeField("isSelected", "keyboardOpen")
-    m.enter.observeField("isSelected", "loading")
+    m.enter.observeField("isSelected", "doRequest")
 end sub
 
 sub setPosterTranslation()
@@ -59,6 +59,32 @@ sub loading()
     m.loadingScreen.ObserveField("isShown", "success")
     m.loadingScreen.setFocus(true)
 end sub
+
+function doRequest()
+    ?"do req"
+    m.urlTask = CreateObject("roSGNode", "UrlTask")
+    m.urlTask.observeField("response", "getResponse")
+    m.urlTask.url = "https://auth.instat.tv/token"
+    m.urlTask.method = "POST"
+    m.urlTask.body = {
+        "email": m.login.text,
+        "client_id": "ott-android",
+        "password": m.password.text,
+        "grant_type": "password"
+    }
+    m.urlTask.control = "run"
+end function
+
+function getResponse()
+    ? "getResp"
+    response = m.urlTask.response
+    accessToken = response.lookup("access_token")
+    ? "resp is " accessToken
+    registry = CreateObject("roRegistry")
+    sec = CreateObject("roRegistrySection", "Authentication")
+    sec.write("accessToken", accessToken)
+    sec.flush()
+end function
 
 sub success(event)
     m.top.removeChild(m.loadingScreen)

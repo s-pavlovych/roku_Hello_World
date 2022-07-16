@@ -1,4 +1,4 @@
-<component name="LoginScreen" extends="Group" initialFocus="group"> 
+<component name="LoginScreen" extends="Screen" initialFocus="group"> 
 
 <children>
 <Poster

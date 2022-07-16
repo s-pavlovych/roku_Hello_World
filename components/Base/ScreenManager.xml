@@ -3,8 +3,6 @@
     <interface>
         <field id="animation" type="string" alias="backAnimation.control" />
         <field id="duration" type="time" alias="backAnimation.duration" />
-        <field id="fieldToInterp" type="string" alias="fade.fieldToInterp" />
-        <field id="reverse" type="boolean" alias="fade.reverse" />
         <function name="showScreen"/>
         <function name="popScreen"/>
     </interface>
@@ -20,5 +18,5 @@
     </Animation>
 </children>
 <script type="text/brightscript" uri="ScreenManager.brs" />
-    
+
 </component>

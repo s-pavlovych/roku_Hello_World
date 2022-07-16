@@ -9,17 +9,14 @@ end sub
 
 function showScreen(screen as object, animated as boolean)
     m.top.animation = "finish"
-    ? "screen opacity" screen.opacity
     m.top.appendChild(screen)
     screen.observeField("backTapped", "fadeScreen")
     screen.setFocus(true)
-    ? "created" screen.id
-    ? "screen opacity" screen.opacity
     if animated = true
-        m.top.reverse = false
-        m.top.fieldToInterp = screen.id + ".opacity"
+        m.fade.reverse = false
+        m.fade.fieldToInterp = screen.id + ".opacity"
         m.top.animation = "start"
-        ? "animated" m.top.fieldToInterp
+        ? "animated" m.fade.fieldToInterp
     else
         screen.opacity = 1
     end if
@@ -29,11 +26,9 @@ sub fadeScreen(event)
     m.top.animation = "finish"
     screen = event.getRoSGNode()
     screen.observeField("opacity", "popScreen")
-    m.top.fieldToInterp = screen.id + ".opacity"
-    m.top.reverse = true
-    ? m.top.reverse
+    m.fade.fieldToInterp = screen.id + ".opacity"
+    m.fade.reverse = true
     m.top.animation = "start"
-    ? m.top.reverse
 end sub
 
 function popScreen(event)
