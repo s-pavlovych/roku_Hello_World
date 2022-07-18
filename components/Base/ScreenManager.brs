@@ -11,6 +11,7 @@ function showScreen(screen as object, animated as boolean)
     m.top.animation = "finish"
     m.top.appendChild(screen)
     screen.observeField("backTapped", "fadeScreen")
+    screen.isShown = true
     screen.setFocus(true)
     if animated = true
         m.fade.reverse = false
@@ -35,13 +36,19 @@ function popScreen(event)
     x = event.getData()
     if x = 0
         lastIndex = m.top.getChildCount() - 1
-        if lastIndex <> 1
         m.top.removeChildIndex(lastIndex)
         ? "deleted " lastIndex
-        end  if
-        if lastIndex <> 0
+        if lastIndex <> 1
             lastScreen = m.top.getChild(lastIndex - 1)
             lastScreen.setFocus(true)
+        else
+            m.top.isEmpty = "true"
         end if
     end if
+
 end function
+
+sub delScreen(screen as object)
+    m.top.removeChild(screen)
+    ? "manager delete screen"
+end sub

@@ -4,6 +4,7 @@
         <field id="screenIndex" type="integer" value="0"/>
         <field id="backTapped" type="bool" alwaysNotify="true"/>
         <field id="blendColor" type="color" alias="background.blendColor" />
+        <field id="isShown" type="boolean" value="false" />
     </interface>
 
     <children>

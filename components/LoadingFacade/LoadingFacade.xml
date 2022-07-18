@@ -1,6 +1,7 @@
 <component name="LoadingFacade" extends="Group">
 <interface>
     <field id="isShown" type="boolean" value="true" />
+    <field id="control" type="string" alias="loading.control, backAnimation.control" />
 </interface>
 <children>
 <Rectangle

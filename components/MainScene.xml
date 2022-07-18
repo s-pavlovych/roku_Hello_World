@@ -1,10 +1,20 @@
 <component name="MainScene" extends="Scene">
+    
     <interface>
+        <field id="backgroundURI" type="uri" value="pkg:/images/someBackground.jpg" />
+        <field id="exitValue" type="string"/>
         <function name="showScreen" />
+        <function name= "delScreen" />
+        <function name="showLoader" />
+        <function name = "hideLoader"/>
+        <function name = "showHomeScreen"/>        
     </interface>
+   
     <children>
-        <ScreenManager id="screenManager">
-        </ScreenManager>
+        <ScreenManager id="screenManager"/>
+        <LoadingFacade id= "loadingFacade"
+            control= "stop" 
+            visible = "false" />
     </children>
 
     <script type="text/brightscript" uri="MainScene.brs" />

@@ -21,7 +21,7 @@ end sub
 
 sub setColor()
     m.top.blendColor = rnd(7777777)
-    
+
 end sub
 
 sub setButtonTranslation()
@@ -37,9 +37,13 @@ end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
     handled = false
-    if press and key = "back"
+    if press
+        if key = "back"
             m.top.backTapped = true
             handled = true
+        else if key = "options"
+            deleteToken()
+        end if
     end if
     return handled
 end function
@@ -48,7 +52,13 @@ sub newScreen()
     testScreen = CreateObject("roSGNode", "TestScreen")
     testScreen.opacity = 0
     testScreen.screenIndex = m.top.screenIndex + 1
-    testScreen.id = "screen" +stri(testScreen.screenIndex)
+    testScreen.id = "screen" + stri(testScreen.screenIndex)
     testScreen.text = "I am" + stri(testScreen.screenIndex)
     showScreen(testScreen, true)
+end sub
+
+sub deleteToken()
+    sec = CreateObject("roRegistrySection", "Authentication")
+    sec.delete("accessToken")
+    ? "deleted"
 end sub

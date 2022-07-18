@@ -10,6 +10,7 @@ sub _initVars()
     m.password = m.top.findNode("password")
     m.enter = m.top.findNode("enter")
     m.logo = m.top.findNode("logo")
+    m.scene = m.top.getScene()
     m.login.observeField("isSelected", "keyboardOpen")
     m.password.observeField("isSelected", "keyboardOpen")
     m.enter.observeField("isSelected", "doRequest")
@@ -31,7 +32,7 @@ sub keyboardOpen(event)
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
     m.keyboard.title = field.hintText
     m.keyboard.textEditBox.leadingEllipsis = "true"
-    m.keyboard.text = field.text 
+    m.keyboard.text = field.text
     m.keyboard.message = ["Please, enter your " + field.id + " here"]
     m.keyboard.buttons = ["OK", "Cancel"]
     m.keyboard.setFocus(true)
@@ -61,7 +62,7 @@ sub loading()
 end sub
 
 function doRequest()
-    ?"do req"
+    m.scene.callFunc("showLoader")
     m.urlTask = CreateObject("roSGNode", "UrlTask")
     m.urlTask.observeField("response", "getResponse")
     m.urlTask.url = "https://auth.instat.tv/token"
@@ -79,6 +80,9 @@ function getResponse()
     ? "getResp"
     response = m.urlTask.response
     accessToken = response.lookup("access_token")
+    if accessToken <> invalid
+        showHomeScreen()
+    end if
     ? "resp is " accessToken
     registry = CreateObject("roRegistry")
     sec = CreateObject("roRegistrySection", "Authentication")
@@ -89,4 +93,9 @@ end function
 sub success(event)
     m.top.removeChild(m.loadingScreen)
     m.group.setFocus(true)
+end sub
+
+sub showHomeScreen()
+    m.scene.callFunc("showHomeScreen")
+    m.top.isShown = false
 end sub
