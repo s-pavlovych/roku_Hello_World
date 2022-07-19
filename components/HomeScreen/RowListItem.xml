@@ -1,0 +1,30 @@
+<component name="RowListItem" extends="Group">
+
+<interface>
+    <field id = "itemContent" type = "node" onChange = "showcontent"/>
+    <field id="width" type="float" onChange="updateLayout"/> 
+    <field id="height" type="float" onChange="updateLayout"/> 
+</interface>
+
+<children >
+
+<Poster 
+id = "itemPoster" 
+translation = "[ 3, 3 ]" 
+width = "512" 
+height = "288" 
+/>
+
+<Label 
+id = "itemLabel" 
+translation = "[ 20, 264 ]" 
+horizAlign = "right" 
+width = "492" 
+/>
+
+</children>
+
+
+<script type="text/brightscript" uri="RowListItem.brs" />
+    
+</component>

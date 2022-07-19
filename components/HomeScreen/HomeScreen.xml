@@ -1,0 +1,23 @@
+<component name="HomeScreen" extends="Screen" initialFocus = "rowList">
+<interface>
+    
+</interface>
+<children>
+    <RowList 
+      id = "rowList" 
+      translation = "[ 120, 120 ]" 
+      itemComponentName = "RowListItem" 
+      numRows = "3" 
+      rowHeights = "[450]"
+      itemSize = "[ 1800, 300 ]" 
+      rowItemSize = "[ [600, 450], [450, 300]]" 
+      itemSpacing = "[ 0, 60 ]" 
+      showRowLabel = "[ true ]" 
+      vertFocusAnimationStyle = "fixedFocusWrap" 
+      rowFocusAnimationStyle = "fixedFocusWrap"
+      drawFocusFeedbackOnTop = "true" 
+      drawFocusFeedback = "true" 
+      />
+</children>
+    <script type="text/brightscript" uri="HomeScreen.brs" />
+</component>

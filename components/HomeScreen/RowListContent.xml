@@ -1,0 +1,48 @@
+<component name="RowListContent" extends="ContentNode">
+
+<script type="text/brightscript" uri="RowListContent.brs" />
+
+<children>
+<ContentNode title = "Row 1">
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node" />
+</ContentNode>
+
+<ContentNode title = "Row 2">
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node" />
+
+</ContentNode>
+<ContentNode title = "Row 3">
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)" />
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node" />
+</ContentNode>
+</children>
+</component>
