@@ -10,6 +10,7 @@
     </interface>
 
 <children>
+    <Poster id="background" uri="pkg:/images/splash-screen_fhd.png" width="1920" height="1080"/>
 <Animation id="backAnimation"  duration = "0.5" easeFunction="linear" repeat="false" control= "stop" delay= "0">
     <FloatFieldInterpolator
         id="fade"

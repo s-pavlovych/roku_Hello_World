@@ -10,23 +10,28 @@ function doRequest()
     sendRequest.setRequest(m.top.method)
     sendRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
     sendRequest.InitClientCertificates()
-    headers = {"Content-Type": "application/json"}
+    headers = { "Content-Type": "application/json" }
     if m.top.headers <> invalid and m.top.headers <> ""
         headers.append(m.top.headers)
     end if
     sendRequest.setHeaders(headers)
     body = FormatJson(m.top.body)
-    sendRequest.asyncPostFromString(body)
+    if m.top.method = "POST"
+        sendRequest.asyncPostFromString(body)
+    else if m.top.method = "GET"
+        sendRequest.asyncGetToString()
+    end if
     while true
         response = wait(0, port)
         responseType = type(response)
         if responseType = "roUrlEvent"
-            response = parseJson(response.GetString())
-            m.top.response = response
-            if m.top.response <> invalid
-                ? "Url Task make it OK"
-            exit while
+            if response.GetResponseCode() = 200
+                response = parseJson(response.GetString())
+                m.top.response = response
+            else m.top.statusCode = response.GetResponseCode()
             end if
+            ? "URLTask ended"
+            exit while
         end if
     end while
 end function

@@ -17,7 +17,7 @@
     <Rectangle
     id="bounds"
     color="#0000000">
-    <!-- transparent and blended color -->
+    <!-- transparent color -->
     <Poster
     id="background"
     uri="pkg:/images/textBox.png"

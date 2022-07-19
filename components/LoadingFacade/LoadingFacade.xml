@@ -1,7 +1,7 @@
 <component name="LoadingFacade" extends="Group">
 <interface>
-    <field id="isShown" type="boolean" value="true" />
-    <field id="control" type="string" alias="loading.control, backAnimation.control" />
+    <field id="control" type="string" alias="backAnimation.control" />
+    <field id="isShown" type="boolean" value="false" />
 </interface>
 <children>
 <Rectangle
@@ -14,10 +14,10 @@ color="#0000FF "
 />
 <LoadingAnimation
 id= "loading"
-control="start"
+control="stop"
 duration = "0.5"
 />
-<Animation id="backAnimation"  duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
+<Animation id="backAnimation"  duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "stop" delay= "0">
     <FloatFieldInterpolator
         id="fade"
         fieldToInterp="background.opacity"

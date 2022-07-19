@@ -18,7 +18,7 @@ end sub
 
 sub repeat(event)
     state = event.getData()
-    if state = "stopped"
+    if state = "stopped" and m.top.isInFocusChain()
         m.fade.reverse = not m.fade.reverse
         m.footAnimation.control = "start"
     end if
@@ -27,9 +27,11 @@ end sub
 sub focused()
     state = m.top.isInFocusChain()
     if state = true
+        m.footAnimation.control = "start"
         m.footprint.uri = m.top.footprintUriInFocus
         m.text.color = m.top.colorInFocus
     else
+        m.footAnimation.control = "stop"
         m.footprint.uri = m.top.footprintUri
         m.text.color = m.top.color
     end if

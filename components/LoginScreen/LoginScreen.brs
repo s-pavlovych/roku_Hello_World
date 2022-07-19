@@ -64,7 +64,7 @@ end sub
 function doRequest()
     m.scene.callFunc("showLoader")
     m.urlTask = CreateObject("roSGNode", "UrlTask")
-    m.urlTask.observeField("response", "getResponse")
+    m.urlTask.observeField("statusCode", "getResponse")
     m.urlTask.url = "https://auth.instat.tv/token"
     m.urlTask.method = "POST"
     m.urlTask.body = {
@@ -74,26 +74,44 @@ function doRequest()
         "grant_type": "password"
     }
     m.urlTask.control = "run"
+    ? "doRequest end"
 end function
 
-function getResponse()
-    ? "getResp"
-    response = m.urlTask.response
-    accessToken = response.lookup("access_token")
-    if accessToken <> invalid
-        showHomeScreen()
+function getResponse(event)
+    code = event.getData()
+    if code = 200
+        response = m.urlTask.response
+        if response <> invalid
+            accessToken = response.lookup("access_token")
+            if accessToken <> invalid
+                saveToken(accessToken)
+                showHomeScreen()
+            end if
+        end if
+    else if code = 400
+        showAlert()
     end if
-    ? "resp is " accessToken
-    registry = CreateObject("roRegistry")
-    sec = CreateObject("roRegistrySection", "Authentication")
-    sec.write("accessToken", accessToken)
-    sec.flush()
 end function
 
-sub success(event)
-    m.top.removeChild(m.loadingScreen)
+sub showAlert()
+    m.scene.callFunc("hideLoader")
+    m.alert = m.top.createChild("StandardMessageDialog")
+    m.alert.title = "Error"
+    m.alert.message= ["Login or password is invalid", "Please, check your information and try again"]
+    m.alert.buttons = ["OK"]
+    m.alert.ObserveField("buttonSelected", "hideAlert")
+    m.alert.setFocus(true)
+end sub
+
+sub hideAlert()
+    m.top.removeChild(m.alert)
     m.group.setFocus(true)
 end sub
+
+' sub success(event)
+'     m.top.removeChild(m.loadingScreen)
+'     m.group.setFocus(true)
+' end sub
 
 sub showHomeScreen()
     m.scene.callFunc("showHomeScreen")

@@ -5,9 +5,8 @@
         <field id="body" type="assocarray" />
         <field id="header" type="assocarray" />
         <field id="response" type="assocarray" />
+        <field id="statusCode" type="integer" />
     </interface>
-
-
 
     <script type="text/brightscript" uri="UrlTask.brs" />
 

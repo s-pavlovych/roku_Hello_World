@@ -1,7 +1,6 @@
 <component name="MainScene" extends="Scene">
     
     <interface>
-        <field id="backgroundURI" type="uri" value="pkg:/images/someBackground.jpg" />
         <field id="exitValue" type="string"/>
         <function name="showScreen" />
         <function name= "delScreen" />
@@ -12,11 +11,9 @@
    
     <children>
         <ScreenManager id="screenManager"/>
-        <LoadingFacade id= "loadingFacade"
-            control= "stop" 
-            visible = "false" />
+        <LoadingFacade id= "loadingFacade" isShown= "false"/>
     </children>
 
     <script type="text/brightscript" uri="MainScene.brs" />
-
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>

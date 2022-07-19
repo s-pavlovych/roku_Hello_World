@@ -2,11 +2,11 @@
 
 <interface>
     <field id="duration" type="time" value="1" alias ="c1Animation.duration, c2Animation.duration, c3Animation.duration"/>
-    <field id="control" type="string" value="stop" alias ="animateCircles.control"/>
+    <field id="control" type="string" value="start" alias ="animateCircles.control"/>
     <field id="colorsControl" type="string" value="start" alias ="c1AnimationColor.control, c2AnimationColor.control, c3AnimationColor.control"/>
     <field id="colorReverse" type="boolean" value="false" alias ="c1color.reverse, c2color.reverse, c3color.reverse"/>
-    <field id="switch" type="boolean" value="true" alwaysNotify= "true" />
-    <field id="Width" type="integer" />
+    <field id="switch" type="boolean"/>
+    <field id="width" type="integer"/>
 </interface>
 
 <children>

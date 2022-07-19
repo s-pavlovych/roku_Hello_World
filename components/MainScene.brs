@@ -6,7 +6,7 @@ end sub
 
 sub initVars()
     m.screenManager = m.top.findNode("screenManager")
-    m.loader = m.top.findNode("LoadingFacade")
+    m.loadingFacade = m.top.findNode("LoadingFacade")
     m.screenManager.observeField("isEmpty", "close")
 end sub
 
@@ -14,16 +14,6 @@ sub close(event)
     state = event.getData()
     if state = true
         m.top.exitValue = "exit"
-    end if
-end sub
-
-sub checkToken()
-    sec = CreateObject("roRegistrySection", "Authentication")
-    if sec.Exists("accessToken")
-        showHomeScreen()
-        ? "Token is OK"
-    else ? "NO token"
-        showLoginScreen()
     end if
 end sub
 
@@ -35,7 +25,7 @@ sub delScreen(event)
     state = event.getData()
     if state = false
     screen = event.getRoSGNode()
-    ? "sceene delete screen" screen.id
+    ? "RoSceene delete screen" screen.id
     m.screenManager.callFunc("delScreen", screen)
     end if
 end sub
@@ -60,11 +50,9 @@ sub showHomeScreen()
 end sub
 
 sub showLoader()
-    m.loader.control = "start"
-    m.loader.visible = "true"
+    m.loadingFacade.isShown = "true"
 end sub
 
 sub hideLoader()
-    m.loader.visible = "false"
-    m.loader.control = "stop"
+    m.loadingFacade.isShown = "false"
 end sub

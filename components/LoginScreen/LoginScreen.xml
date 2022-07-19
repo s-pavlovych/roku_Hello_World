@@ -41,5 +41,5 @@ height="210"
 </children>
 
 <script type="text/brightscript" uri="pkg:/components/LoginScreen/LoginScreen.brs" />
-
+<script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>

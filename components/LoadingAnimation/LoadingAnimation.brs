@@ -1,6 +1,7 @@
 function init()
    _initVars()
    setColorDuration()
+   ' valuesToDefault()
    setWidth()
 end function
 
@@ -31,7 +32,6 @@ end sub
 
 sub repeat1(event)
    state = event.getData()
-   isAnimated(state)
    if state = "stopped"
       repeater(m.c1Animation, m.c1translation)
    end if
@@ -39,7 +39,6 @@ end sub
 
 sub repeat2(event)
    state = event.getData()
-   isAnimated(state)
    if state = "stopped"
       repeater(m.c2Animation, m.c2translation)
    end if
@@ -47,7 +46,6 @@ end sub
 
 sub repeat3(event)
    state = event.getData()
-   isAnimated(state)
    if state = "stopped"
       repeater(m.c3Animation, m.c3translation)
    end if
@@ -71,14 +69,6 @@ sub switcher()
       m.animateCircles.control = "stop"
       m.top.colorsControl = "stop"
       ' m.top.visible = false
-   end if
-end sub
-
-sub isAnimated(x as string)
-   if x = "running"
-      m.top.isAnimated = "true"
-   else
-      m.top.isAnimated = "false"
    end if
 end sub
 
