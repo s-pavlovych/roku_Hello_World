@@ -1,0 +1,24 @@
+<component name="ScreenManager" extends="Group">
+
+    <interface>
+        <field id="animation" type="string" alias="backAnimation.control" />
+        <field id="duration" type="time" alias="backAnimation.duration" />
+        <field id="isEmpty" type="boolean" value="false" />
+        <function name="showScreen"/>
+        <function name="popScreen"/>
+        <function name="delScreen"/>
+    </interface>
+
+<children>
+<Animation id="backAnimation"  duration = "0.5" easeFunction="linear" repeat="false" control= "stop" delay= "0">
+    <FloatFieldInterpolator
+        id="fade"
+        key="[0.0, 1.0]"
+        keyValue="[ [0.0], [1.0] ]"
+        reverse = "false"
+        />
+    </Animation>
+</children>
+<script type="text/brightscript" uri="ScreenManager.brs" />
+
+</component>

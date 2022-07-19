@@ -19,7 +19,7 @@
     horizAlign= "center"   
     vertAlign= "center"   
     /> 
-    <Animation id="footAnimation" duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "start" delay= "0">
+    <Animation id="footAnimation" duration = "0.5" easeFunction="inOutQuad" repeat="false" control= "stop" delay= "0" >
     <FloatFieldInterpolator
     id="fade"
     fieldToInterp="footprint.opacity"

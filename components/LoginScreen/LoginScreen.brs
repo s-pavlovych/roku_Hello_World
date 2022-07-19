@@ -10,9 +10,10 @@ sub _initVars()
     m.password = m.top.findNode("password")
     m.enter = m.top.findNode("enter")
     m.logo = m.top.findNode("logo")
+    m.scene = m.top.getScene()
     m.login.observeField("isSelected", "keyboardOpen")
     m.password.observeField("isSelected", "keyboardOpen")
-    m.enter.observeField("isSelected", "loading")
+    m.enter.observeField("isSelected", "doRequest")
 end sub
 
 sub setPosterTranslation()
@@ -31,7 +32,7 @@ sub keyboardOpen(event)
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
     m.keyboard.title = field.hintText
     m.keyboard.textEditBox.leadingEllipsis = "true"
-    m.keyboard.text = field.text 
+    m.keyboard.text = field.text
     m.keyboard.message = ["Please, enter your " + field.id + " here"]
     m.keyboard.buttons = ["OK", "Cancel"]
     m.keyboard.setFocus(true)
@@ -60,7 +61,55 @@ sub loading()
     m.loadingScreen.setFocus(true)
 end sub
 
-sub success(event)
-    m.top.removeChild(m.loadingScreen)
+function doRequest()
+    m.scene.callFunc("showLoader")
+    m.urlTask = CreateObject("roSGNode", "UrlTask")
+    m.urlTask.observeField("responseData", "getResponse")
+    m.urlTask.url = "https://auth.instat.tv/token"
+    m.urlTask.method = "POST"
+    m.urlTask.body = {
+        "email": m.login.text,
+        "client_id": "ott-android",
+        "password": m.password.text,
+        "grant_type": "password"
+    }
+    m.urlTask.control = "run"
+    ? "doRequest end"
+end function
+
+function getResponse(event)
+    response = event.getData()
+    if response.code = 200
+        ? response.code
+        body = response.body
+        if body <> invalid
+            accessToken = body.lookup("access_token")
+            if accessToken <> invalid
+                saveInRegSec(accessToken, "accessToken", "Authentication")
+                showHomeScreen()
+            end if
+        end if
+    else if response.code = 400
+        showAlert()
+    end if
+end function
+
+sub showAlert()
+    m.scene.callFunc("hideLoader")
+    m.alert = m.top.createChild("StandardMessageDialog")
+    m.alert.title = "Error"
+    m.alert.message= ["Login or password is invalid", "Please, check your information and try again"]
+    m.alert.buttons = ["OK"]
+    m.alert.ObserveField("buttonSelected", "hideAlert")
+    m.alert.setFocus(true)
+end sub
+
+sub hideAlert()
+    m.top.removeChild(m.alert)
     m.group.setFocus(true)
+end sub
+
+sub showHomeScreen()
+    m.scene.callFunc("showHomeScreen")
+    m.top.isShown = false
 end sub

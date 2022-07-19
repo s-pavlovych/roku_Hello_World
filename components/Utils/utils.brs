@@ -1,0 +1,16 @@
+function checkRegSec( key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    if sec.Exists(key)
+        ? "Token is OK"
+        return sec.Exists(key)
+    else
+        return invalid
+    end if
+end function
+
+sub saveInRegSec(data as object, key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    sec.write(key, data)
+    sec.flush()
+end sub
+

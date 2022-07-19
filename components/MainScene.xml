@@ -1,9 +1,19 @@
 <component name="MainScene" extends="Scene">
-<children>
-    <LoginScreen
-    id="loginFacade"/>
-</children>
+    
+    <interface>
+        <field id="exitValue" type="string"/>
+        <function name="showScreen" />
+        <function name= "delScreen" />
+        <function name="showLoader" />
+        <function name = "hideLoader"/>
+        <function name = "showHomeScreen"/>        
+    </interface>
+   
+    <children>
+        <ScreenManager id="screenManager"/>
+        <LoadingFacade id= "loadingFacade" isShown= "false"/>
+    </children>
 
-<script type="text/brightscript" uri="MainScene.brs" />
-
+    <script type="text/brightscript" uri="MainScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>
