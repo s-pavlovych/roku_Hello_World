@@ -25,14 +25,13 @@ function doRequest()
         response = wait(0, port)
         responseType = type(response)
         if responseType = "roUrlEvent"
-            if response.GetResponseCode() = 200
-                response = parseJson(response.GetString())
-                m.top.response = response
-            else m.top.statusCode = response.GetResponseCode()
+            m.top.responseData = {
+                "code" : response.GetResponseCode()
+                "body" : parseJson(response.GetString())
+            }
             end if
             ? "URLTask ended"
             exit while
-        end if
     end while
 end function
 

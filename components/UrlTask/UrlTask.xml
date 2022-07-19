@@ -4,8 +4,7 @@
         <field id="method" type="string" />
         <field id="body" type="assocarray" />
         <field id="header" type="assocarray" />
-        <field id="response" type="assocarray" />
-        <field id="statusCode" type="integer" />
+        <field id="responseData" type="assocarray" />
     </interface>
 
     <script type="text/brightscript" uri="UrlTask.brs" />

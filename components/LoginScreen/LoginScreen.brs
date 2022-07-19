@@ -64,7 +64,7 @@ end sub
 function doRequest()
     m.scene.callFunc("showLoader")
     m.urlTask = CreateObject("roSGNode", "UrlTask")
-    m.urlTask.observeField("statusCode", "getResponse")
+    m.urlTask.observeField("responseData", "getResponse")
     m.urlTask.url = "https://auth.instat.tv/token"
     m.urlTask.method = "POST"
     m.urlTask.body = {
@@ -78,17 +78,18 @@ function doRequest()
 end function
 
 function getResponse(event)
-    code = event.getData()
-    if code = 200
-        response = m.urlTask.response
-        if response <> invalid
-            accessToken = response.lookup("access_token")
+    response = event.getData()
+    if response.code = 200
+        ? response.code
+        body = response.body
+        if body <> invalid
+            accessToken = body.lookup("access_token")
             if accessToken <> invalid
                 saveToken(accessToken)
                 showHomeScreen()
             end if
         end if
-    else if code = 400
+    else if response.code = 400
         showAlert()
     end if
 end function
@@ -107,11 +108,6 @@ sub hideAlert()
     m.top.removeChild(m.alert)
     m.group.setFocus(true)
 end sub
-
-' sub success(event)
-'     m.top.removeChild(m.loadingScreen)
-'     m.group.setFocus(true)
-' end sub
 
 sub showHomeScreen()
     m.scene.callFunc("showHomeScreen")
