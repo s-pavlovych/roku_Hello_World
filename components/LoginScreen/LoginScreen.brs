@@ -85,7 +85,7 @@ function getResponse(event)
         if body <> invalid
             accessToken = body.lookup("access_token")
             if accessToken <> invalid
-                saveToken(accessToken)
+                saveInRegSec(accessToken, "accessToken", "Authentication")
                 showHomeScreen()
             end if
         end if

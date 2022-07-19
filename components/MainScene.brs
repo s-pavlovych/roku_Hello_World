@@ -1,7 +1,6 @@
 sub init()
     initVars()
-    checkToken()
-    ' showLoginScreen()
+    checkUser()
 end sub
 
 sub initVars()
@@ -14,6 +13,13 @@ sub close(event)
     state = event.getData()
     if state = true
         m.top.exitValue = "exit"
+    end if
+end sub
+
+sub checkUser()
+    if checkRegSec("accessToken", "Authentication") = true
+        showHomeScreen()
+    else showLoginScreen()
     end if
 end sub
 

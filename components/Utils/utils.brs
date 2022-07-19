@@ -1,16 +1,16 @@
-sub checkToken()
-    sec = CreateObject("roRegistrySection", "Authentication")
-    if sec.Exists("accessToken")
-        showHomeScreen()
+function checkRegSec( key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    if sec.Exists(key)
         ? "Token is OK"
-    else ? "NO token"
-        showLoginScreen()
+        return sec.Exists(key)
+    else
+        return invalid
     end if
-end sub
+end function
 
-sub saveToken(data as object)
-    sec = CreateObject("roRegistrySection", "Authentication")
-    sec.write("accessToken", data)
+sub saveInRegSec(data as object, key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    sec.write(key, data)
     sec.flush()
 end sub
 
