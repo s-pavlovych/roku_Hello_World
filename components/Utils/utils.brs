@@ -14,3 +14,12 @@ sub saveInRegSec(data as object, key as string, section as string)
     sec.flush()
 end sub
 
+function readRegSec( key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    if sec.Exists(key)
+        ? "Token is OK"
+        return sec.Read(key)
+    else
+        return invalid
+    end if
+end function

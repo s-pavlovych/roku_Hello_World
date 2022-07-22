@@ -1,23 +1,26 @@
 <component name="HomeScreen" extends="Screen" initialFocus = "rowList">
 <interface>
-    
+    <field id="access" type="boolean" />
 </interface>
 <children>
     <RowList 
       id = "rowList" 
-      translation = "[ 120, 120 ]" 
+      translation = "[ 120, 90 ]" 
       itemComponentName = "RowListItem" 
+      showRowLabel = "[false,true]"
       numRows = "3" 
       rowHeights = "[450]"
-      itemSize = "[ 1800, 300 ]" 
-      rowItemSize = "[ [600, 450], [450, 300]]" 
-      itemSpacing = "[ 0, 60 ]" 
-      showRowLabel = "[ true ]" 
-      vertFocusAnimationStyle = "fixedFocusWrap" 
-      rowFocusAnimationStyle = "fixedFocusWrap"
+      itemSize = "[ 1800, 270 ]" 
+      rowItemSpacing="[[18,0]]"
+      rowItemSize = "[ [600, 450], [360, 270]]" 
+      itemSpacing = "[ 0, 90 ]" 
+      vertFocusAnimationStyle = "fixedFocus" 
+      rowFocusAnimationStyle = "floatingFocus"
       drawFocusFeedbackOnTop = "true" 
       drawFocusFeedback = "true" 
+      wrapDividerBitmapUri	= "none"
       />
 </children>
     <script type="text/brightscript" uri="HomeScreen.brs" />
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>

@@ -11,9 +11,10 @@ function doRequest()
     sendRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
     sendRequest.InitClientCertificates()
     headers = { "Content-Type": "application/json" }
-    if m.top.headers <> invalid and m.top.headers <> ""
+    if m.top.headers <> invalid and m.top.headers.keys() <> invalid 
         headers.append(m.top.headers)
     end if
+    ? "headers are " headers
     sendRequest.setHeaders(headers)
     body = FormatJson(m.top.body)
     if m.top.method = "POST"
@@ -26,12 +27,13 @@ function doRequest()
         responseType = type(response)
         if responseType = "roUrlEvent"
             m.top.responseData = {
-                "code" : response.GetResponseCode()
-                "body" : parseJson(response.GetString())
+                "code": response.GetResponseCode()
+                "body": parseJson(response.GetString())
             }
-            end if
-            ? "URLTask ended"
-            exit while
+        end if
+        ? "URLTask ended"
+        ? "ResponseData is" m.top.responseData
+        exit while
     end while
 end function
 

@@ -2,24 +2,51 @@
 
 <interface>
     <field id = "itemContent" type = "node" onChange = "showcontent"/>
-    <field id="width" type="float" onChange="updateLayout"/> 
-    <field id="height" type="float" onChange="updateLayout"/> 
+    <field id= "width" type= "float" onChange= "updateLayout"/> 
+    <field id= "height" type= "float" onChange= "updateLayout"/>
+    <field id= "rowIndex" type= "integer" onChange= "setLabels" /> 
+    <field id= "posterHeader" type="string" />
 </interface>
 
 <children >
 
-<Poster 
-id = "itemPoster" 
-translation = "[ 3, 3 ]" 
-width = "512" 
-height = "288" 
+<MaskGroup 
+id = "maskGroup" 
+maskuri = "pkg:/images/posterMask.png" >
+    <Poster 
+    id = "itemPoster"
+    uri = "pkg:/images/posterMask.png"
+    >
+    <Poster
+    id = "posterTeam1" 
+    loadDisplayMode	= "scaleToFit	"
+    translation = "[0,0]"
+    />
+    <Poster
+    id = "posterTeam2"
+    loadDisplayMode	= "scaleToFit	" 
+    translation = "[0,0]"
+    />
+    </Poster>
+</MaskGroup>
+
+<ScrollingLabel 
+id = "title" 
+horizAlign = "left"
+vertAlign = "bottom" 
 />
 
 <Label 
-id = "itemLabel" 
-translation = "[ 20, 264 ]" 
-horizAlign = "right" 
-width = "492" 
+id = "time" 
+horizAlign = "left"
+vertAlign = "bottom" 
+text = "time"
+/>
+
+<Label 
+id = "score" 
+horizAlign = "right"
+vertAlign = "top" 
 />
 
 </children>

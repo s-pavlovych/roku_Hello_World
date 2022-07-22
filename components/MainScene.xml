@@ -2,9 +2,9 @@
     
     <interface>
         <field id="exitValue" type="string"/>
-        <function name="showScreen" />
+        <function name= "showScreen" />
         <function name= "delScreen" />
-        <function name="showLoader" />
+        <function name= "showLoader" />
         <function name = "hideLoader"/>
         <function name = "showHomeScreen"/>        
     </interface>

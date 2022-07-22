@@ -2,6 +2,7 @@ sub init()
     initVars()
     showHome()
     ' checkUser()
+    ' showLoginScreen()
 end sub
 
 sub showHome()
