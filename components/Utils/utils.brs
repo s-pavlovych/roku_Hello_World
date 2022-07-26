@@ -4,6 +4,7 @@ function checkRegSec( key as string, section as string)
         ? "Token is OK"
         return sec.Exists(key)
     else
+        ? "token is NOT ok"
         return invalid
     end if
 end function

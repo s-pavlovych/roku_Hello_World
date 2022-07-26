@@ -1,6 +1,7 @@
 <component name="HomeScreen" extends="Screen" initialFocus = "rowList">
 <interface>
     <field id="access" type="boolean" />
+    <field id="contentArray" type="array" onChange= "setContent" />
 </interface>
 <children>
     <RowList 
@@ -16,8 +17,7 @@
       itemSpacing = "[ 0, 90 ]" 
       vertFocusAnimationStyle = "fixedFocus" 
       rowFocusAnimationStyle = "floatingFocus"
-      drawFocusFeedbackOnTop = "true" 
-      drawFocusFeedback = "true" 
+      drawFocusFeedback = "false" 
       wrapDividerBitmapUri	= "none"
       />
 </children>

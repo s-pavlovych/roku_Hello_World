@@ -18,7 +18,7 @@ sub centerAnimation()
 end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
-    ? "LoadingFacade function onKeyEvent("key" as string, "press" as boolean) as boolean"
+    ' ? "LoadingFacade function onKeyEvent("key" as string, "press" as boolean) as boolean"
     handled = true
     if press and key = "back"
         m.top.isShown = false

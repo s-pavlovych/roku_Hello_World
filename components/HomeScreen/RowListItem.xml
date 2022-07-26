@@ -5,7 +5,11 @@
     <field id= "width" type= "float" onChange= "updateLayout"/> 
     <field id= "height" type= "float" onChange= "updateLayout"/>
     <field id= "rowIndex" type= "integer" onChange= "setLabels" /> 
-    <field id= "posterHeader" type="string" />
+    <field id = "focusPercent" type = "float" onChange = "showFocus"/> 
+    <field id = "rowFocusPercent" type = "float" onChange = "showRowFocus"/>
+    <field id= "sport" type= "integer" /> 
+    <field id= "idTeam1" type= "integer" onChange= "setUri"/> 
+    <field id= "idTeam2" type= "integer" onChange= "setUri"/> 
 </interface>
 
 <children >
@@ -15,8 +19,13 @@ id = "maskGroup"
 maskuri = "pkg:/images/posterMask.png" >
     <Poster 
     id = "itemPoster"
-    uri = "pkg:/images/posterMask.png"
+    uri = "pkg:/images/posterBack.png"
     >
+    <Poster 
+    id = "itemPosterCover"
+    uri = "pkg:/images/posterInFocus.png"
+    opacity ="0" 
+    />
     <Poster
     id = "posterTeam1" 
     loadDisplayMode	= "scaleToFit	"

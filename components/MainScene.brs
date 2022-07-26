@@ -41,7 +41,7 @@ sub delScreen(event)
     state = event.getData()
     if state = false
     screen = event.getRoSGNode()
-    ? "RoSceene delete screen" screen.id
+    ' ? "RoSceene delete screen" screen.id
     m.screenManager.callFunc("delScreen", screen)
     end if
 end sub

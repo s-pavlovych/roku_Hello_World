@@ -60,5 +60,5 @@ end sub
 sub deleteToken()
     sec = CreateObject("roRegistrySection", "Authentication")
     sec.delete("accessToken")
-    ? "deleted"
+    ' ? "deleted"
 end sub

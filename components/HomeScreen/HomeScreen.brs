@@ -1,11 +1,29 @@
 sub init()
     m.top.observeField("access", "getData")
-    m.rowlist = m.top.findNode("rowList")
     m.top.setFocus(true)
+    m.rowlist = m.top.findNode("rowList")
     m.content = createObject("RoSGNode", "ContentNode")
     m.rowlist.content = m.content
-    m.count = 0
+    m.contentArray = []
+    m.today = CreateObject("roDateTime")
+    m.daysToShow = 10
+    m.errors = 0
     doRequest()
+end sub
+
+sub setContent(event)
+    array = event.getData()
+    if array.count() = m.daysToShow - m.errors
+        contentRows = []
+        array.sortBy("date")
+        for i = array.count() - 1 to 1 step -1
+            row = array.GetEntry(i)
+            row = row.Lookup("contentNode")
+            ? "ROW IS " row
+            contentRows.Push(row)
+            m.content.appendChildren(contentRows)
+        end for
+    end if
 end sub
 
 function doRequest()
@@ -25,16 +43,14 @@ end function
 
 function getToken(event)
     response = event.getData()
-    ? "REsponse code" response.code
-
     if response.code = 200
-        ? "REsponse code" response.code
+        ' ? "REsponse code" response.code
         body = response.body
         if body <> invalid
             accessToken = body.lookup("access_token")
             if accessToken <> invalid
                 saveInRegSec(accessToken, "accessToken", "Authentication")
-                ? "Token = " accessToken
+                ' ? "Token = " accessToken
                 m.top.access = true
             end if
         end if
@@ -43,20 +59,19 @@ function getToken(event)
 end function
 
 sub getData()
-dataRequest("17/07/2022")
-dataRequest("15/07/2022")
-dataRequest("17/07/2022")
-dataRequest("15/07/2022")
-dataRequest("17/07/2022")
+    for i = m.daysToShow to 1 step -1
+        dataRequest(m.today.AsDateString("short-date"))
+        m.today.FromSeconds(m.today.AsSeconds() - 84600)
+    end for
 end sub
 
 sub dataRequest(date as string)
     m.urlTask = CreateObject("roSGNode", "UrlTask")
+    m.urlTask.id = m.count
     m.urlTask.observeField("responseData", "getResponse")
     m.urlTask.url = "https://api.instat.tv/data"
     token = readRegSec("accessToken", "Authentication")
     m.urlTask.headers = { "Authorization": "Bearer " + token }
-    ' ? m.urlTask.headers
     m.urlTask.method = "POST"
     m.urlTask.body = {
         "params": {
@@ -70,22 +85,32 @@ sub dataRequest(date as string)
 end sub
 
 sub getResponse(event)
+    index = event.getNode()
     response = event.getData()
     if response.code = 200
-        ? response.code
         body = response.body
         videoContent = body.Lookup("video_content")
         broadcast = videoContent.Lookup("broadcast")
-        ? "Broadcast" broadcast
-        broadcast = convertToContentNode(broadcast)
-        ? broadcast
-        addContentRow(broadcast, m.count+1)
+        if broadcast <> invalid
+            date = broadcast[0]
+            date = date.Lookup("date")
+            date = date.left(10)
+            ? "DATE IS " date
+            ? "INDEX IS " index
+            broadcast = convertToContentNode(broadcast)
+            m.contentArray.push({ "date": date, "contentNode": broadcast })
+        else m.errors += 1
+        end if
+        m.top.contentArray = m.contentArray
     end if
-
 end sub
 
 function convertToContentNode(content as object) as object
     rowContent = createObject("RoSGNode", "ContentNode")
+    date = content[0]
+    date = date.Lookup("date")
+    date = date.left(10)
+    rowContent.title = date
     for each key in content
         sport = key.Lookup("sport")
         team1 = key.Lookup("team1")
@@ -96,8 +121,6 @@ function convertToContentNode(content as object) as object
         idTeam2 = team2.Lookup("id")
         score1 = team1.Lookup("score")
         score2 = team2.Lookup("score")
-        uriTeam1 = getUri(idTeam1.toStr(), sport)
-        uriTeam2 = getUri(idTeam2.toStr(), sport)
         title = nameTeam1 + " vs " + nameTeam2
         score = ""
         if score1 <> invalid or score2 <> invalid
@@ -105,30 +128,21 @@ function convertToContentNode(content as object) as object
         end if
         poster = key.Lookup("previewURL")
         itemContent = rowContent.createChild("ContentNode")
-        itemContent.addField("score", "string", false)
-        itemContent.addField("posterTeam1", "string", false)
-        itemContent.addField("posterTeam2", "string", false)
-        itemContent.posterTeam1 = uriTeam1
-        itemContent.posterTeam2 = uriTeam2
+        fieldsToAdd = {
+            "idTeam1": "integer",
+            "idTeam2": "integer",
+            "sport": "integer",
+            "score": "string",
+            "posterTeam1": "string",
+            "posterTeam2": "string"
+        }
+        itemContent.addFields(fieldsToAdd)
+        itemContent.idTeam1 = idTeam1
+        itemContent.idTeam2 = idTeam2
+        itemContent.sport = sport
         itemContent.score = score
         itemContent.title = title
         itemContent.hdposterurl = poster
     end for
     return rowContent
 end function
-
-function getUri(id as string, sport as integer) as string
-    if sport = 1
-        uri = "https://instatscout.com/images/teams/180/" + id + ".png"
-       else if sport = 2
-        uri =  "https://hockey.instatscout.com/images/teams/180/" + id + ".png"
-       else if sport = 3
-        uri = "https://basketball.instatscout.com/images/teams/180/" + id + ".png"
-    end if
-    return uri
-end function
-
-sub addContentRow(row as object, index as integer)
-    row.title = index.toStr()
-    m.content.insertChild(row, index)
-end sub

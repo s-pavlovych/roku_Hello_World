@@ -74,7 +74,7 @@ function doRequest()
         "grant_type": "password"
     }
     m.urlTask.control = "run"
-    ? "doRequest end"
+    ' ? "doRequest end"
 end function
 
 function getResponse(event)

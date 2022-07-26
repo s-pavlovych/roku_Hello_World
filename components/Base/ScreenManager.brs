@@ -17,7 +17,7 @@ function showScreen(screen as object, animated as boolean)
         m.fade.reverse = false
         m.fade.fieldToInterp = screen.id + ".opacity"
         m.top.animation = "start"
-        ? "animated" m.fade.fieldToInterp
+        ' ? "animated" m.fade.fieldToInterp
     else
         screen.opacity = 1
     end if
@@ -37,7 +37,7 @@ function popScreen(event)
     if x = 0
         lastIndex = m.top.getChildCount() - 1
         m.top.removeChildIndex(lastIndex)
-        ? "deleted " lastIndex
+        ' ? "deleted " lastIndex
         if lastIndex <> 1
             lastScreen = m.top.getChild(lastIndex - 1)
             lastScreen.setFocus(true)
@@ -50,5 +50,5 @@ end function
 
 sub delScreen(screen as object)
     m.top.removeChild(screen)
-    ? "manager delete screen"
+    ' ? "manager delete screen"
 end sub
