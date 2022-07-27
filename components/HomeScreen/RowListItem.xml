@@ -5,8 +5,12 @@
     <field id= "width" type= "float" onChange= "updateLayout"/> 
     <field id= "height" type= "float" onChange= "updateLayout"/>
     <field id= "rowIndex" type= "integer" onChange= "setLabels" /> 
-    <field id = "focusPercent" type = "float" onChange = "showFocus"/> 
-    <field id = "rowFocusPercent" type = "float" onChange = "showRowFocus"/>
+    <!-- <field id="rowListHasFocus" type="Boolean" onChange = "hideFocus"/>
+    <field id="rowHasFocus" type="Boolean" onChange = "hideFocus"/>
+    <field id="itemHasFocus" type="Boolean" onChange = "hideFocus"/> -->
+    <field id= "favorite" type="boolean" onChange= "showIcon" />
+    <field id= "focusPercent" type = "float" onChange = "showFocus"/> 
+    <field id= "rowFocusPercent" type = "float" onChange = "showRowFocus"/>
     <field id= "sport" type= "integer" /> 
     <field id= "idTeam1" type= "integer" onChange= "setUri"/> 
     <field id= "idTeam2" type= "integer" onChange= "setUri"/> 
@@ -26,14 +30,19 @@ maskuri = "pkg:/images/posterMask.png" >
     uri = "pkg:/images/posterInFocus.png"
     opacity ="0" 
     />
+    <Poster 
+    id = "starIcon"
+    uri = "pkg:/images/favorite2.png"
+    visible = "false"
+    />
     <Poster
     id = "posterTeam1" 
-    loadDisplayMode	= "scaleToFit	"
+    loadDisplayMode	= "scaleToFit"
     translation = "[0,0]"
     />
     <Poster
     id = "posterTeam2"
-    loadDisplayMode	= "scaleToFit	" 
+    loadDisplayMode	= "scaleToFit" 
     translation = "[0,0]"
     />
     </Poster>

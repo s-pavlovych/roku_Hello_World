@@ -11,9 +11,17 @@ sub _initVars()
     m.enter = m.top.findNode("enter")
     m.logo = m.top.findNode("logo")
     m.scene = m.top.getScene()
+    m.top.observeField("focusedChild", "setFocus")
     m.login.observeField("isSelected", "keyboardOpen")
     m.password.observeField("isSelected", "keyboardOpen")
     m.enter.observeField("isSelected", "doRequest")
+end sub
+
+sub setFocus()
+    state = m.top.hasFocus()
+    if state = true
+        m.login.setFocus(true)
+    end if
 end sub
 
 sub setPosterTranslation()

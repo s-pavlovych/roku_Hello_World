@@ -1,8 +1,17 @@
 sub init()
     initVars()
-    showHome()
+    showHomePage()
+    ' showHome()
     ' checkUser()
     ' showLoginScreen()
+end sub
+
+sub showHomePage()
+    homeScreen = CreateObject("roSGNode", "HomePage")
+    homeScreen.id = "HomePage"
+    homeScreen.opacity = 0
+    homeScreen.screenIndex = 1
+    showScreen(homeScreen, true)
 end sub
 
 sub showHome()

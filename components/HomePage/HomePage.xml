@@ -1,0 +1,61 @@
+<component name="HomePage" extends="Screen" initialFocus = "home">
+    <interface>
+        <field id="visibleScreen" type="node" />
+    </interface>
+<children>
+    <HomeScreen
+    id="homeScreen"
+    visible = "false"
+    />
+    <LoginScreen
+    id="loginScreen"
+    visible = "false"
+    focusable = "true"
+
+    />
+    <TestScreen
+    id="testScreen"
+    visible = "false"
+    />
+<FocusableLayoutGroup
+    id="group"
+    layoutDirection= "horiz"
+	translation="[0, 0]"
+	horizAlignment="center"
+	vertAlignment = "top"
+	itemSpacings= "[30,30]">
+	<AnimatedButton
+	height="90"
+    width= "150"
+    id = "home"
+    text = "Home"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "myList"
+    text = "My list"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "options"
+    text = "Options"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    
+</FocusableLayoutGroup>
+    
+</children>
+
+<script type="text/brightscript" uri="HomePage.brs" />
+    
+</component>

@@ -1,8 +1,8 @@
 <component name="AnimatedButton" extends="Group">
 <interface>
     <field id="text" type="string" alias="text.text" />
-    <field id="color" type="color" value="#000000" />
-    <field id="colorInFocus" type="color" value="#ffffff" />
+    <field id="color" type="color" value="#ffffff" />
+    <field id="colorInFocus" type="color" value= "#000000" />
     <field id="footprintUri" type="string" onChange= "setFootprint" />
     <field id="footprintUriInFocus" type="string" />
     <field id="height" type="integer" alias="footprint.height, text.height" />
@@ -13,6 +13,7 @@
 <children>
     <Poster
     id="footprint"
+    opacity = "1"
     />
     <Label
     id="text"
@@ -24,7 +25,7 @@
     id="fade"
     fieldToInterp="footprint.opacity"
     key="[0.0, 1.0]"
-    keyValue="[ [1.0], [0.6] ]"
+    keyValue="[ [0.6], [1.0] ]"
     />
     </Animation>
 </children>

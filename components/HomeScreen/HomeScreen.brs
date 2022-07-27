@@ -1,6 +1,7 @@
 sub init()
     m.top.observeField("access", "getData")
-    m.top.setFocus(true)
+    m.top.observeField("focusedChild", "setFocus")
+    ' m.top.setFocus(true)
     m.rowlist = m.top.findNode("rowList")
     m.content = createObject("RoSGNode", "ContentNode")
     m.rowlist.content = m.content
@@ -11,6 +12,13 @@ sub init()
     doRequest()
 end sub
 
+sub setFocus()
+    state = m.top.hasFocus()
+    if state = true
+        m.rowlist.setFocus(true)
+    end if
+end sub
+
 sub setContent(event)
     array = event.getData()
     if array.count() = m.daysToShow - m.errors
@@ -19,7 +27,7 @@ sub setContent(event)
         for i = array.count() - 1 to 1 step -1
             row = array.GetEntry(i)
             row = row.Lookup("contentNode")
-            ? "ROW IS " row
+            ' ? "ROW IS " row
             contentRows.Push(row)
             m.content.appendChildren(contentRows)
         end for
@@ -95,8 +103,8 @@ sub getResponse(event)
             date = broadcast[0]
             date = date.Lookup("date")
             date = date.left(10)
-            ? "DATE IS " date
-            ? "INDEX IS " index
+            ' ? "DATE IS " date
+            ' ? "INDEX IS " index
             broadcast = convertToContentNode(broadcast)
             m.contentArray.push({ "date": date, "contentNode": broadcast })
         else m.errors += 1
@@ -129,20 +137,33 @@ function convertToContentNode(content as object) as object
         poster = key.Lookup("previewURL")
         itemContent = rowContent.createChild("ContentNode")
         fieldsToAdd = {
-            "idTeam1": "integer",
-            "idTeam2": "integer",
-            "sport": "integer",
-            "score": "string",
-            "posterTeam1": "string",
-            "posterTeam2": "string"
+            "focus": 0.0 ,
+            "favorite": false,
+            "idTeam1": idTeam1,
+            "idTeam2": idTeam2,
+            "sport": sport,
+            "score": score,
+            "title": title,
+            "posterTeam1": idTeam1,
+            "posterTeam2": idTeam2
         }
         itemContent.addFields(fieldsToAdd)
-        itemContent.idTeam1 = idTeam1
-        itemContent.idTeam2 = idTeam2
-        itemContent.sport = sport
-        itemContent.score = score
-        itemContent.title = title
-        itemContent.hdposterurl = poster
     end for
     return rowContent
+end function
+
+sub addToFavorite()
+    row = m.rowlist.content.getChild(m.rowlist.rowItemFocused[0])
+    item = row.getChild(m.rowlist.rowItemFocused[1])
+    item.favorite = not item.favorite
+    ? m.rowlist.currFocusFeedbackOpacity
+end sub
+
+function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false
+    if press and key = "options"
+        addToFavorite()
+        handled = true
+    end if
+    return handled
 end function

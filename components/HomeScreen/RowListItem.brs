@@ -1,6 +1,7 @@
 sub init()
     m.itemPoster = m.top.findNode("itemPoster")
     m.itemPosterCover = m.top.findNode("itemPosterCover")
+    m.starIcon = m.top.findNode("starIcon")
     m.maskGroup = m.top.findNode("maskGroup")
     m.title = m.top.findNode("title")
     m.time = m.top.findNode("time")
@@ -10,13 +11,22 @@ sub init()
 end sub
 
 sub showcontent()
-    itemcontent = m.top.itemContent
-    m.title.text = itemcontent.title
-    ' m.time.text = itemcontent.time
-    m.score.text = itemcontent.score
+    itemContent = m.top.itemContent
+    m.title.text = itemContent.title
+    ' m.time.text = itemContent.time
+    m.score.text = itemContent.score
     m.top.sport = itemContent.sport
     m.top.idTeam1 = itemContent.idTeam1
     m.top.idTeam2 = itemContent.idTeam2
+    m.top.favorite = itemContent.favorite
+    m.top.focusPercent = itemContent.focus
+end sub
+
+sub hideFocus()
+    ? "rowListHasFocus " m.top.rowListHasFocus
+    ? "rowHasFocus " m.top.rowHasFocus
+    ? "itemHasFocus	" m.top.itemHasFocus
+    m.itemPosterCover.opacity = 0
 end sub
 
 sub showFocus()
@@ -27,11 +37,22 @@ sub showRowFocus()
     m.itemPosterCover.opacity = 0
 end sub
 
+sub showIcon(event)
+    ? "show ICON"
+    state = event.getData()
+    if state = true
+    m.starIcon.visible = true
+    else
+    m.starIcon.visible = false
+    end if
+end sub
+
 sub setLabels()
     if m.top.rowIndex <> 0
         m.top.removeChild(m.time)
         m.top.removeChild(m.score)
         m.title.translation = [6, 0]
+        m.starIcon.scale = [0.5, 0.5]
     end if
 end sub
 
@@ -52,6 +73,7 @@ sub updateLayout()
     m.title.translation = [6, -45]
     m.time.translation = [6, 0]
     m.score.translation = [-12, 6]
+    m.starIcon.translation = [m.top.width*0.8, 20]
 end sub
 
 sub setSize(child as object, parent as object)
@@ -78,3 +100,4 @@ function getUri() as string
     end if
     return uri
 end function
+
