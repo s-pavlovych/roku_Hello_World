@@ -1,7 +1,5 @@
 <component name="RowListContent" extends="ContentNode">
 
-<script type="text/brightscript" uri="RowListContent.brs" />
-
 <children>
 <ContentNode title = "">
 <ContentNode 

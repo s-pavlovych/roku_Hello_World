@@ -1,10 +1,10 @@
 function checkRegSec( key as string, section as string)
     sec = CreateObject("roRegistrySection", section)
     if sec.Exists(key)
-        ? "Token is OK"
+        ' ? "Token is OK"
         return sec.Exists(key)
     else
-        ? "token is NOT ok"
+        ' ? "token is NOT ok"
         return invalid
     end if
 end function
@@ -15,12 +15,18 @@ sub saveInRegSec(data as object, key as string, section as string)
     sec.flush()
 end sub
 
-function readRegSec( key as string, section as string)
+function readRegSec(key as string, section as string)
     sec = CreateObject("roRegistrySection", section)
     if sec.Exists(key)
-        ? "Token is OK"
         return sec.Read(key)
     else
         return invalid
     end if
 end function
+
+sub deleteFromRegSec(key as string, section as string)
+    sec = CreateObject("roRegistrySection", section)
+    sec.delete(key)
+    sec.flush()
+    ' ? "deleted"
+end sub

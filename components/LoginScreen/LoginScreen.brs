@@ -2,7 +2,13 @@ function init()
     _initVars()
     setGroupTranslation()
     setPosterTranslation()
+    _setTestData()
 end function
+
+sub _setTestData()
+    m.login.text = "a@a.net"
+    m.password.text = "a"
+end sub
 
 sub _initVars()
     m.group = m.top.findNode("group")
@@ -58,6 +64,10 @@ sub keyboardClose(event)
             m.password.text = m.keyboard.text
             m.password.textColor = "#000000"
         end if
+        if m.keyboard.text = ""
+            m.login.textColor = "#616161"
+            m.password.textColor = "#616161"
+        end if
     end if
     m.top.removeChild(m.keyboard)
     m.group.setFocus(true)
@@ -106,7 +116,7 @@ sub showAlert()
     m.scene.callFunc("hideLoader")
     m.alert = m.top.createChild("StandardMessageDialog")
     m.alert.title = "Error"
-    m.alert.message= ["Login or password is invalid", "Please, check your information and try again"]
+    m.alert.message = ["Login or password is invalid", "Please, check your information and try again"]
     m.alert.buttons = ["OK"]
     m.alert.ObserveField("buttonSelected", "hideAlert")
     m.alert.setFocus(true)
@@ -118,6 +128,6 @@ sub hideAlert()
 end sub
 
 sub showHomeScreen()
-    m.scene.callFunc("showHomeScreen")
+    m.scene.callFunc("showHomePage")
     m.top.isShown = false
 end sub

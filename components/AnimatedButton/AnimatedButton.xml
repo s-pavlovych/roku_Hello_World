@@ -25,7 +25,7 @@
     id="fade"
     fieldToInterp="footprint.opacity"
     key="[0.0, 1.0]"
-    keyValue="[ [0.6], [1.0] ]"
+    keyValue="[ [0.8], [1.0] ]"
     />
     </Animation>
 </children>

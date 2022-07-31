@@ -1,6 +1,7 @@
 sub init()
     m.top.observeField("access", "getData")
     m.top.observeField("focusedChild", "setFocus")
+    m.global.observeField("content", "updateFavorites", true)
     ' m.top.setFocus(true)
     m.rowlist = m.top.findNode("rowList")
     m.content = createObject("RoSGNode", "ContentNode")
@@ -9,6 +10,8 @@ sub init()
     m.today = CreateObject("roDateTime")
     m.daysToShow = 10
     m.errors = 0
+    m.favoriteContent = {}
+    setGlobalFromRegistry()
     doRequest()
 end sub
 
@@ -27,9 +30,9 @@ sub setContent(event)
         for i = array.count() - 1 to 1 step -1
             row = array.GetEntry(i)
             row = row.Lookup("contentNode")
-            ' ? "ROW IS " row
             contentRows.Push(row)
             m.content.appendChildren(contentRows)
+            m.top.isShown = true
         end for
     end if
 end sub
@@ -120,43 +123,106 @@ function convertToContentNode(content as object) as object
     date = date.left(10)
     rowContent.title = date
     for each key in content
+        m.id = key.Lookup("id")
         sport = key.Lookup("sport")
         team1 = key.Lookup("team1")
         team2 = key.Lookup("team2")
+        poster = key.Lookup("previewURL")
         nameTeam1 = team1.Lookup("name_eng")
         nameTeam2 = team2.Lookup("name_eng")
         idTeam1 = team1.Lookup("id")
         idTeam2 = team2.Lookup("id")
         score1 = team1.Lookup("score")
         score2 = team2.Lookup("score")
+        poster = key.Lookup("previewURL")
         title = nameTeam1 + " vs " + nameTeam2
         score = ""
         if score1 <> invalid or score2 <> invalid
             score = score1.toStr() + " - " + score2.toStr()
         end if
-        poster = key.Lookup("previewURL")
         itemContent = rowContent.createChild("ContentNode")
         fieldsToAdd = {
-            "focus": 0.0 ,
             "favorite": false,
             "idTeam1": idTeam1,
             "idTeam2": idTeam2,
             "sport": sport,
             "score": score,
             "title": title,
-            "posterTeam1": idTeam1,
-            "posterTeam2": idTeam2
+            "posterTeam1Uri": "",
+            "posterTeam2Uri": "",
         }
+        itemContent.id = m.id
         itemContent.addFields(fieldsToAdd)
+        if m.global.content.doesExist(m.id.toStr()) = true
+            itemContent.favorite = true
+        end if
+        ' if checkRegSec(m.id.toStr(), "Favorites") = true
+        '     itemContent.favorite = true
+        '     favoriteItem = {"favorite": itemContent.favorite,
+        '     "idTeam1": itemContent.idTeam1,
+        '     "idTeam2": itemContent.idTeam2,
+        '     "id": itemContent.id,
+        '     "sport": itemContent.sport,
+        '     "score": itemContent.score,
+        '     "title": itemContent.title,
+        '     "posterTeam1Uri": itemContent.posterTeam1Uri,
+        '     "posterTeam2Uri": itemContent.posterTeam2Uri
+        '     }
+        '     m.favoriteContent.AddReplace(m.id.toStr(), favoriteItem)
+        '     m.global.content = m.favoriteContent
+        ' end if
     end for
     return rowContent
 end function
 
+sub updateFavorites()
+    ?"update run "
+    rows = m.content.getChildren(-1, 0)
+    for each row in rows
+        items = row.getChildren(-1, 0)
+        for each item in items
+            if m.global.content.doesExist(item.id) = false
+                item.favorite = false
+            end if
+        end for
+    end for
+    m.favoriteContent = m.global.content
+end sub
+
+sub setGlobalFromRegistry()
+    sec = CreateObject("roRegistrySection", "Favorites")
+    for each item in sec.GetKeyList()
+        favoriteItem = ParseJson(readRegSec(item, "Favorites"))
+        m.favoriteContent.AddReplace(item, favoriteItem)
+    end for
+    m.global.content = m.favoriteContent
+end sub
+
 sub addToFavorite()
     row = m.rowlist.content.getChild(m.rowlist.rowItemFocused[0])
     item = row.getChild(m.rowlist.rowItemFocused[1])
+    id = item.id.toStr()
     item.favorite = not item.favorite
-    ? m.rowlist.currFocusFeedbackOpacity
+    if item.favorite = true
+        item = {
+            "favorite": item.favorite,
+            "idTeam1": item.idTeam1,
+            "idTeam2": item.idTeam2,
+            "id": item.id,
+            "sport": item.sport,
+            "score": item.score,
+            "title": item.title,
+            "posterTeam1Uri": item.posterTeam1Uri,
+            "posterTeam2Uri": item.posterTeam2Uri
+        }
+        saveInRegSec(FormatJson(item), id, "Favorites")
+        m.favoriteContent.AddReplace(id, item)
+    else
+        deleteFromRegSec(id, "Favorites")
+        m.favoriteContent.Delete(id)
+    end if
+    m.global.content = m.favoriteContent
+    ?"GLOBAL IS " m.global.content
 end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean

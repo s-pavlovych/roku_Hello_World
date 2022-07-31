@@ -1,21 +1,23 @@
 <component name="HomePage" extends="Screen" initialFocus = "home">
     <interface>
         <field id="visibleScreen" type="node" />
+        <field id="contentIsShown" type="boolean" alias= "homeScreen.isShown" />
     </interface>
 <children>
     <HomeScreen
     id="homeScreen"
     visible = "false"
+    isShown = "false"
     />
-    <LoginScreen
-    id="loginScreen"
+    <SettingsScreen
+    id="settingsScreen"
     visible = "false"
-    focusable = "true"
-
+    isShown = "true"
     />
-    <TestScreen
-    id="testScreen"
+    <FavoritesScreen
+    id="favoritesScreen"
     visible = "false"
+    isShown = "true"
     />
 <FocusableLayoutGroup
     id="group"
@@ -46,10 +48,10 @@
 	height="90"
     width= "150"
     id = "options"
-    text = "Options"
+    text = ""
 	focusable="true"
-	footprintUri= "pkg:/images/buttonUnfocused.png"
-	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	footprintUri= "pkg:/images/SettingsButtonUnfocused.png"
+	footprintUriInFocus="pkg:/images/SettingsButtonFocus.png"
 	/>
     
 </FocusableLayoutGroup>

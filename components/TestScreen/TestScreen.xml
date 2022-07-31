@@ -18,5 +18,5 @@
 </children>
 
     <script type="text/brightscript" uri="TestScreen.brs" />
-    
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>

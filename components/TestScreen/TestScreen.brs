@@ -42,7 +42,7 @@ function onKeyEvent(key as string, press as boolean) as boolean
             m.top.backTapped = true
             handled = true
         else if key = "options"
-            deleteToken()
+            deleteFromRegSec("accessToken","Authentication" )
         end if
     end if
     return handled
@@ -55,10 +55,4 @@ sub newScreen()
     testScreen.id = "screen" + stri(testScreen.screenIndex)
     testScreen.text = "I am" + stri(testScreen.screenIndex)
     showScreen(testScreen, true)
-end sub
-
-sub deleteToken()
-    sec = CreateObject("roRegistrySection", "Authentication")
-    sec.delete("accessToken")
-    ' ? "deleted"
 end sub

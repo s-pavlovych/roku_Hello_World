@@ -34,7 +34,7 @@ sub control(event)
         m.top.visible = true
     else
         m.top.visible = false
-        m.top.control = "finish"
+        m.top.control = "stop"
         m.loading.switch = false
     end if
 end sub

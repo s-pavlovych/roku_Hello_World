@@ -35,7 +35,7 @@ sub setBackgroundHeight()
 end sub
 
 sub setBackgroundTranslation()
-    ? "sub setBackgroundTranslation()"
+    ' ? "sub setBackgroundTranslation()"
     centerX = (m.bounds.width - m.background.width) /2
     centerY = (m.bounds.height - m.background.height) /2
     m.background.translation = [centerX, centerY]
