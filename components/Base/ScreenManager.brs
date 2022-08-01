@@ -17,8 +17,7 @@ function showScreen(screen as object, animated as boolean)
         m.fade.reverse = false
         m.fade.fieldToInterp = screen.id + ".opacity"
         m.top.animation = "start"
-        ? "animated" m.fade.fieldToInterp
-        ? screen.opacity
+        ' ? "animated" m.fade.fieldToInterp
     else
         screen.opacity = 1
     end if

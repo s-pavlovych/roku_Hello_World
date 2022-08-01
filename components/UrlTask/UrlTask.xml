@@ -3,7 +3,11 @@
         <field id="url" type="string" />
         <field id="method" type="string" />
         <field id="body" type="assocarray" />
+<<<<<<< HEAD
         <field id="headers" type="assocarray" />
+=======
+        <field id="header" type="assocarray" />
+>>>>>>> 08b7ca82b27970be227bf700bfe724b19e0fd15f
         <field id="responseData" type="assocarray" />
     </interface>
 
