@@ -49,7 +49,7 @@
     uri= "pkg:/images/channel-poster_fhd.png"
     width= "600"
     height= "600"
-    visible = "false"/>
+    visible = "true"/>
     <RadioButtonList
     id = "qualityList"
     visible = "false"
@@ -63,14 +63,16 @@
         </ContentNode>
     </RadioButtonList>
 
-    <CheckList 
-    id = "replayChecklist"
+    <RadioButtonList
+    visible = "false"
+    id = "replayList"
     itemSize = "[300, 72]"
     color = "0x262626ff" >
         <ContentNode role = "content" >
-        <ContentNode title = "Replay"/>
+        <ContentNode title = "On"/>
+        <ContentNode title = "Off"/>
         </ContentNode>
-    </CheckList>
+    </RadioButtonList>
 
 </Poster>
 

@@ -18,6 +18,14 @@
     vertFocusAnimationStyle = "fixedFocus" 
     rowFocusAnimationStyle = "floatingFocus"
     />
+    <Label
+    vertAlign = "center"
+    visible = "false"
+    id="Label"
+    text = "Your list is empty"
+    width = "660"
+    height = "75"
+    /> 
 </children>
 
 <script type="text/brightscript" uri="FavoritesScreen.brs" />

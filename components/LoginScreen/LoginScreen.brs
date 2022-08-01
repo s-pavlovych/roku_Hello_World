@@ -42,12 +42,12 @@ sub setGroupTranslation()
 end sub
 
 sub keyboardOpen(event)
-    field = event.getRoSGNode()
+    node = event.getRoSGNode()
     m.keyboard = m.top.createChild("StandardKeyboardDialog")
-    m.keyboard.title = field.hintText
+    m.keyboard.title = node.hintText
     m.keyboard.textEditBox.leadingEllipsis = "true"
-    m.keyboard.text = field.text
-    m.keyboard.message = ["Please, enter your " + field.id + " here"]
+    m.keyboard.text = node.text
+    m.keyboard.message = ["Please, enter your " + node.id + " here"]
     m.keyboard.buttons = ["OK", "Cancel"]
     m.keyboard.setFocus(true)
     m.keyboard.ObserveField("buttonSelected", "keyboardClose")

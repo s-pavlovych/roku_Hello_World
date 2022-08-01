@@ -1,23 +1,29 @@
 sub init()
     m.top.observeField("focusedChild", "setFocus")
     m.markupGrid = m.top.findNode("MarkupGrid")
+    m.label = m.top.findNode("Label")
     m.content = createObject("RoSGNode", "ContentNode")
     m.global.observeField("content", "setContent", true)
     ' m.markupGrid.content = CreateObject("roSGNode", "MarkupGridContent")
     m.markupGrid.content = m.content
     m.favoriteContent = {}
+    setLabelTranslation()
+    setGridTranslation()
     setContent()
 end sub
 
+sub setGridTranslation()
+    centerX = ( 1920 - ((m.markupGrid.itemSpacing[0]* (m.markupGrid.numColumns-1)) + (m.markupGrid.itemSize[0] * m.markupGrid.numColumns)))/ 2
+    m.markupGrid.translation = [centerX, 160]
+end sub
 
 sub setContent()
-    ? "SET CONTENT RUN "
+    contentArray = m.content.getChildren(-1, 0)
+    contentArrayOfId = {}
+    for each item in contentArray
+        contentArrayOfId.addReplace(item.id, item)
+    end for
     for each key in m.global.content
-        contentArray = m.content.getChildren(-1, 0)
-        contentArrayOfId = {}
-        for each item in contentArray
-            contentArrayOfId.addReplace(item.id, item)
-        end for
         if contentArrayOfId.doesExist(key) = false
             value = m.global.content.Lookup(key)
             m.favoriteContent.AddReplace(key, value)
@@ -32,10 +38,18 @@ sub setContent()
             contentArrayOfId.addReplace(item.id, item)
         end for
         if m.global.content.doesExist(item.id) = false
-        ? m.content.removeChild(item)
-        ? m.favoriteContent.Delete(item.id)
+            m.content.removeChild(item)
+            m.favoriteContent.Delete(item.id)
         end if
     end for
+    if (m.content.getChildren(-1, 0)).Count() = 0
+        ? "Content is empty "
+        m.label.visible = true
+        m.markupGrid.visible = false
+    else
+        m.label.visible = false
+        m.markupGrid.visible = true
+    end if
 end sub
 
 function convertToContentNode(content as object) as object
@@ -65,6 +79,13 @@ function convertToContentNode(content as object) as object
     end for
     return gridItem
 end function
+
+sub setLabelTranslation()
+    m.label.font.size = 75
+    centerX = ( 1920 - m.label.width) / 2
+    centerY = ( 1080 - m.label.height) / 2
+    m.label.translation = [centerX, centerY]
+end sub
 
 sub setFocus()
     state = m.top.hasFocus()

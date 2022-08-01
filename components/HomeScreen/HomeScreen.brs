@@ -156,21 +156,6 @@ function convertToContentNode(content as object) as object
         if m.global.content.doesExist(m.id.toStr()) = true
             itemContent.favorite = true
         end if
-        ' if checkRegSec(m.id.toStr(), "Favorites") = true
-        '     itemContent.favorite = true
-        '     favoriteItem = {"favorite": itemContent.favorite,
-        '     "idTeam1": itemContent.idTeam1,
-        '     "idTeam2": itemContent.idTeam2,
-        '     "id": itemContent.id,
-        '     "sport": itemContent.sport,
-        '     "score": itemContent.score,
-        '     "title": itemContent.title,
-        '     "posterTeam1Uri": itemContent.posterTeam1Uri,
-        '     "posterTeam2Uri": itemContent.posterTeam2Uri
-        '     }
-        '     m.favoriteContent.AddReplace(m.id.toStr(), favoriteItem)
-        '     m.global.content = m.favoriteContent
-        ' end if
     end for
     return rowContent
 end function

@@ -26,7 +26,7 @@ end sub
 sub showFocus()
     if m.top.rowListHasFocus = true
         m.itemPosterCover.opacity = m.top.focusPercent
-    else if m.top.rowListHasFocus = false
+    else if m.top.rowListHasFocus = false or m.top.rowHasFocus = false
         m.itemPosterCover.opacity = 0
     end if
 end sub

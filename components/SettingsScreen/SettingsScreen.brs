@@ -8,39 +8,44 @@ end sub
 sub initVars()
     m.group = m.top.findNode("group")
     m.contentArea = m.top.findNode("contentArea")
+    m.posterLogo = m.top.findNode("posterLogo")
     m.qualityList = m.top.findNode("qualityList")
     m.logout = m.top.findNode("logout")
     m.replay = m.top.findNode("replay")
     m.quality = m.top.findNode("quality")
-    m.replayChecklist = m.top.findNode("replayChecklist")
-    m.qualityList.observeField("checkedItem", "saveQuality")
+    m.replayList = m.top.findNode("replayList")
     m.top.observeField("focusedChild", "setFocus")
     m.quality.observeField("isSelected", "setQuality")
     m.logout.observeField("isSelected", "logout")
     m.replay.observeField("isSelected", "setReplay")
-    m.qualityList.observeField("checkedItem", "saveQuality")
+    m.qualityList.observeField("itemSelected", "saveSetting")
+    m.replayList.observeField("itemSelected", "saveSetting")
+end sub
+
+sub saveSetting(event)
+    node = event.getRoSGNode()
+    m.group.setFocus(true)
+    node.visible = false
+    m.posterLogo.visible = true
 end sub
 
 sub setQuality()
+    m.posterLogo.visible = false
     m.qualityList.visible = true
     m.qualityList.setFocus(true)
 end sub
 
 sub setReplay()
-    m.replayChecklist.visible = true
-    m.replayChecklist.setFocus(true)
-end sub
-
-sub saveQuality()
-    m.group.setFocus(true)
-    m.qualityList.visible = false
+    m.posterLogo.visible = false
+    m.replayList.visible = true
+    m.replayList.setFocus(true)
 end sub
 
 sub setCheckBoxesTranslation()
     centerX = (m.contentArea.width - m.qualityList.itemSize[0]) /2
     centerY = m.contentArea.height /3
     m.qualityList.translation = [centerX, centerY]
-    m.replayChecklist.translation = [centerX, centerY]
+    m.replayList.translation = [centerX, centerY]
 end sub
 
 sub setAreaTranslation()
@@ -58,7 +63,7 @@ end sub
 sub setFocus()
     state = m.top.hasFocus()
     if state = true
-        m.group.setFocus(true)
+        m.replay.setFocus(true)
     end if
 end sub
 
@@ -66,5 +71,4 @@ sub logout()
     sec = CreateObject("roRegistrySection", "Authentication")
     sec.delete("accessToken")
     m.top.isShown = false
-    ' ? "logout " m.top.isShown
 end sub
