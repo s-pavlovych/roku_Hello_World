@@ -1,10 +1,19 @@
 sub init()
     initVars()
+    ' showDetailPage()
     showHomePage()
     ' showHome()
     ' checkUser()
     ' showLoginScreen()
 end sub
+
+' sub showDetailPage()
+'     DetailPage = CreateObject("roSGNode", "DetailPage")
+'     DetailPage.id = "DetailPage"
+'     DetailPage.opacity = 0
+'     DetailPage.screenIndex = 1
+'     showScreen(DetailPage, true)
+' end sub
 
 sub showHomePage()
     homeScreen = CreateObject("roSGNode", "HomePage")

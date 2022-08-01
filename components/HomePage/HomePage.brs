@@ -5,6 +5,7 @@ sub init()
 end sub
 
 sub _initVars()
+    m.top.observeField("focusedChild", "setFocus")
     m.group = m.top.findNode("group")
     m.home = m.top.findNode("home")
     m.myList = m.top.findNode("myList")
@@ -52,7 +53,7 @@ sub setGroupTranslation()
 end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
-    ? "Home Page function onKeyEvent("key" as string, "press" as boolean) as boolean "
+    ' ? "Home Page function onKeyEvent("key" as string, "press" as boolean) as boolean "
     handled = false
     if press = false
         if key = "down"
@@ -66,3 +67,10 @@ function onKeyEvent(key as string, press as boolean) as boolean
     end if
     return handled
 end function
+
+sub setFocus()
+    state = m.top.hasFocus()
+    if state = true
+        m.homeScreen.setFocus(true)
+    end if
+end sub

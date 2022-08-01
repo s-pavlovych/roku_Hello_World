@@ -1,6 +1,7 @@
 sub init()
     m.top.observeField("focusedChild", "setFocus")
     m.markupGrid = m.top.findNode("MarkupGrid")
+    m.markupGrid.observeField("itemSelected", "showDetailPage")
     m.label = m.top.findNode("Label")
     m.content = createObject("RoSGNode", "ContentNode")
     m.global.observeField("content", "setContent", true)
@@ -11,6 +12,17 @@ sub init()
     setGridTranslation()
     setContent()
 end sub
+
+sub showDetailPage()
+    item = m.markupGrid.content.getChild(m.markupGrid.itemSelected)
+    m.id = item.id.toStr()
+        DetailPage = CreateObject("roSGNode", "DetailPage")
+        DetailPage.id = m.id
+        DetailPage.opacity = 0
+        DetailPage.screenIndex = 1
+        DetailPage.parentItem = item
+        showScreen(DetailPage, true)
+    end sub
 
 sub setGridTranslation()
     centerX = ( 1920 - ((m.markupGrid.itemSpacing[0]* (m.markupGrid.numColumns-1)) + (m.markupGrid.itemSize[0] * m.markupGrid.numColumns)))/ 2

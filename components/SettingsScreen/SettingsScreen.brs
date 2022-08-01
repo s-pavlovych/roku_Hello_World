@@ -42,8 +42,8 @@ sub setReplay()
 end sub
 
 sub setCheckBoxesTranslation()
-    centerX = (m.contentArea.width - m.qualityList.itemSize[0]) /2
-    centerY = m.contentArea.height /3
+    centerX = (m.contentArea.width - m.qualityList.itemSize[0]) / 2
+    centerY = m.contentArea.height / 3
     m.qualityList.translation = [centerX, centerY]
     m.replayList.translation = [centerX, centerY]
 end sub

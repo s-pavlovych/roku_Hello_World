@@ -4,6 +4,7 @@ sub init()
     m.global.observeField("content", "updateFavorites", true)
     ' m.top.setFocus(true)
     m.rowlist = m.top.findNode("rowList")
+    m.rowlist.observeField("rowItemSelected", "showDetailPage")	
     m.content = createObject("RoSGNode", "ContentNode")
     m.rowlist.content = m.content
     m.contentArray = []
@@ -168,6 +169,7 @@ sub updateFavorites()
         for each item in items
             if m.global.content.doesExist(item.id) = false
                 item.favorite = false
+            else item.favorite = true
             end if
         end for
     end for
@@ -209,6 +211,18 @@ sub addToFavorite()
     m.global.content = m.favoriteContent
     ?"GLOBAL IS " m.global.content
 end sub
+
+sub showDetailPage()
+    row = m.rowlist.content.getChild(m.rowlist.rowItemSelected[0])
+    item = row.getChild(m.rowlist.rowItemSelected[1])
+    m.id = item.id.toStr()
+        DetailPage = CreateObject("roSGNode", "DetailPage")
+        DetailPage.id = m.id
+        DetailPage.opacity = 0
+        DetailPage.screenIndex = 1
+        DetailPage.parentItem = item
+        showScreen(DetailPage, true)
+    end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
     handled = false

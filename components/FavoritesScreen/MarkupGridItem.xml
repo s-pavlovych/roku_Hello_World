@@ -15,8 +15,8 @@
 
 <children>
     <MaskGroup 
-id = "maskGroup" 
-maskuri = "pkg:/images/posterMask.png" >
+    id = "maskGroup" 
+    maskuri = "pkg:/images/posterMask.png" >
     <Poster 
     id = "itemPoster"
     uri = "pkg:/images/posterBack.png"
