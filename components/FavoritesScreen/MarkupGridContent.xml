@@ -1,0 +1,42 @@
+<component name="MarkupGridContent" extends="ContentNode">
+
+<children>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglepg.jpg"
+title = "Rectangle Node"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/rectanglerotpg.jpg"
+title = "Rectangle Node (Rotated)"
+/>
+<ContentNode 
+HDPosterUrl = "http://www.sdktestinglab.com/Tutorial/images/labelpg.jpg"
+title = "Label Node"
+/>
+
+</children>
+</component>

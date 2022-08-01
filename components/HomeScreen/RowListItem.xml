@@ -1,0 +1,76 @@
+<component name="RowListItem" extends="Group">
+
+<interface>
+    <field id = "itemContent" type = "node" onChange = "showcontent"/>
+    <field id= "width" type= "float" onChange= "updateLayout"/> 
+    <field id= "height" type= "float" onChange= "updateLayout"/>
+    <field id= "rowIndex" type= "integer" onChange= "setLabels" /> 
+    <field id= "rowListHasFocus" type="Boolean" onChange = "showFocus" alwaysNotify= "true"/>
+    <field id= "favorite" type="boolean" onChange= "showIcon" />
+    <field id= "focusPercent" type = "float" onChange = "showFocus"/> 
+    <field id= "rowFocusPercent" type = "float" onChange = "showRowFocus"/>
+    <field id= "sport" type= "integer" /> 
+    <field id= "idTeam1" type= "integer" onChange= "setUri"/> 
+    <field id= "idTeam2" type= "integer" onChange= "setUri"/> 
+    <field id= "posterTeam1Uri" type= "uri" alias = "posterTeam1.uri" /> 
+    <field id= "posterTeam2Uri" type= "uri" alias = "posterTeam2.uri" /> 
+</interface>
+
+<children >
+
+<MaskGroup 
+id = "maskGroup" 
+maskuri = "pkg:/images/posterMask.png" >
+    <Poster 
+    id = "itemPoster"
+    uri = "pkg:/images/posterBack.png"
+    >
+    <Poster 
+    id = "itemPosterCover"
+    uri = "pkg:/images/posterInFocus.png"
+    opacity ="0" 
+    />
+    <Poster 
+    id = "starIcon"
+    uri = "pkg:/images/favorite2.png"
+    visible = "false"
+    />
+    <Poster
+    id = "posterTeam1" 
+    loadDisplayMode	= "scaleToFit"
+    translation = "[0,0]"
+    />
+    <Poster
+    id = "posterTeam2"
+    loadDisplayMode	= "scaleToFit" 
+    translation = "[0,0]"
+    />
+    </Poster>
+</MaskGroup>
+
+<ScrollingLabel 
+scrollSpeed = "50"
+id = "title" 
+horizAlign = "left"
+vertAlign = "bottom" 
+/>
+
+<Label 
+id = "time" 
+horizAlign = "left"
+vertAlign = "bottom" 
+text = "time"
+/>
+
+<Label 
+id = "score" 
+horizAlign = "right"
+vertAlign = "top" 
+/>
+
+</children>
+
+
+<script type="text/brightscript" uri="RowListItem.brs" />
+    
+</component>

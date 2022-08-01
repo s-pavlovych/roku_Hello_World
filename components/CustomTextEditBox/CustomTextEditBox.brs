@@ -21,7 +21,6 @@ sub focused()
 end sub
 
 sub setBackgroundWidth()
-    ? "sub setBackgroundWidth()"
     m.background.width = m.bounds.width * m.top.scaleIndex
     m.textEditBox.width =  m.background.width - 20
     setBackgroundTranslation()
@@ -29,7 +28,6 @@ sub setBackgroundWidth()
 end sub
 
 sub setBackgroundHeight()
-    ?" sub setBackgroundHeight()"
     m.background.height = m.bounds.height * m.top.scaleIndex
     m.textEditBox.height =  m.background.height
     setBackgroundTranslation()
@@ -37,7 +35,7 @@ sub setBackgroundHeight()
 end sub
 
 sub setBackgroundTranslation()
-    ? "sub setBackgroundTranslation()"
+    ' ? "sub setBackgroundTranslation()"
     centerX = (m.bounds.width - m.background.width) /2
     centerY = (m.bounds.height - m.background.height) /2
     m.background.translation = [centerX, centerY]

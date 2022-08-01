@@ -31,7 +31,8 @@ sub focused()
         m.footprint.uri = m.top.footprintUriInFocus
         m.text.color = m.top.colorInFocus
     else
-        m.footAnimation.control = "stop"
+        m.footAnimation.control = "finish"
+        m.footprint.opacity = 1
         m.footprint.uri = m.top.footprintUri
         m.text.color = m.top.color
     end if

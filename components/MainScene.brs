@@ -1,6 +1,36 @@
 sub init()
     initVars()
-    checkUser()
+    ' showDetailPage()
+    showHomePage()
+    ' showHome()
+    ' checkUser()
+    ' showLoginScreen()
+end sub
+
+' sub showDetailPage()
+'     DetailPage = CreateObject("roSGNode", "DetailPage")
+'     DetailPage.id = "DetailPage"
+'     DetailPage.opacity = 0
+'     DetailPage.screenIndex = 1
+'     showScreen(DetailPage, true)
+' end sub
+
+sub showHomePage()
+    homeScreen = CreateObject("roSGNode", "HomePage")
+    homeScreen.observeField("isShown", "delScreen")
+    homeScreen.observeField("contentIsShown", "hideLoader")
+    homeScreen.id = "HomePage"
+    homeScreen.opacity = 0
+    homeScreen.screenIndex = 1
+    showScreen(homeScreen, true)
+end sub
+
+sub showHome()
+    homeScreen = CreateObject("roSGNode", "HomeScreen")
+    homeScreen.id = "HomeScreen"
+    homeScreen.opacity = 0
+    homeScreen.screenIndex = 1
+    showScreen(homeScreen, true)
 end sub
 
 sub initVars()
@@ -30,9 +60,12 @@ end function
 sub delScreen(event)
     state = event.getData()
     if state = false
-    screen = event.getRoSGNode()
-    ? "RoSceene delete screen" screen.id
-    m.screenManager.callFunc("delScreen", screen)
+        screen = event.getRoSGNode()
+        ' ? "RoSceene delete screen" screen.id
+        m.screenManager.callFunc("delScreen", screen)
+        if screen <> invalid and screen.id = "HomePage"
+            showLoginScreen()
+        end if
     end if
 end sub
 
