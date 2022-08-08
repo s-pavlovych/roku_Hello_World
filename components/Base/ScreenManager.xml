@@ -10,11 +10,11 @@
     </interface>
 
 <children>
-<Animation id="backAnimation"  duration = "0.5" easeFunction="linear" repeat="false" control= "stop" delay= "0">
+<Animation id="backAnimation"  duration = "0.3" easeFunction="outQuad" repeat="false" control= "stop" delay= "0">
     <FloatFieldInterpolator
         id="fade"
         key="[0.0, 1.0]"
-        keyValue="[ [0.0], [1.0] ]"
+        keyValue="[ 0, 1 ]"
         reverse = "false"
         />
     </Animation>

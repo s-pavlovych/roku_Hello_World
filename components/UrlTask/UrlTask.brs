@@ -5,7 +5,7 @@ end sub
 function doRequest()
     sendRequest = createObject("roUrlTransfer")
     port = CreateObject("roMessagePort")
-    sendRequest.SetPort(port)
+    sendRequest.setMessagePort(port)
     sendRequest.setUrl(m.top.url)
     sendRequest.setRequest(m.top.method)
     sendRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
@@ -32,7 +32,7 @@ function doRequest()
             }
         end if
         ' ? "URLTask ended"
-        ' ? "ResponseData is" m.top.responseData
+        ' ? "ResponseData is" m.top.responseData.body
         exit while
     end while
 end function

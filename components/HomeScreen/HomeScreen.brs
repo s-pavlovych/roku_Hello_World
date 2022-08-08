@@ -4,13 +4,13 @@ sub init()
     m.global.observeField("content", "updateFavorites", true)
     ' m.top.setFocus(true)
     m.rowlist = m.top.findNode("rowList")
-    m.rowlist.observeField("rowItemSelected", "showDetailPage")	
+    m.rowlist.observeField("rowItemSelected", "showDetailPage")
     m.content = createObject("RoSGNode", "ContentNode")
     m.rowlist.content = m.content
     m.contentArray = []
     m.today = CreateObject("roDateTime")
     m.daysToShow = 10
-    m.errors = 0
+    m.emptyDays = 0
     m.favoriteContent = {}
     setGlobalFromRegistry()
     doRequest()
@@ -25,9 +25,9 @@ end sub
 
 sub setContent(event)
     array = event.getData()
-    if array.count() = m.daysToShow - m.errors
         contentRows = []
         array.sortBy("date")
+        if array.count() = m.daysToShow - m.emptyDays
         for i = array.count() - 1 to 1 step -1
             row = array.GetEntry(i)
             row = row.Lookup("contentNode")
@@ -50,13 +50,12 @@ function doRequest()
         "grant_type": "password"
     }
     m.urlTask.control = "run"
-    ? "doRequest end"
+    ' ? "doRequest end"
 end function
 
 function getToken(event)
     response = event.getData()
     if response.code = 200
-        ' ? "REsponse code" response.code
         body = response.body
         if body <> invalid
             accessToken = body.lookup("access_token")
@@ -72,14 +71,13 @@ end function
 
 sub getData()
     for i = m.daysToShow to 1 step -1
-        dataRequest(m.today.AsDateString("short-date"))
+        dataRequest(m.today.GetDayOfMonth().toStr() + "/" + m.today.GetMonth().toStr() + "/" + m.today.GetYear().toStr())
         m.today.FromSeconds(m.today.AsSeconds() - 84600)
     end for
 end sub
 
 sub dataRequest(date as string)
     m.urlTask = CreateObject("roSGNode", "UrlTask")
-    m.urlTask.id = m.count
     m.urlTask.observeField("responseData", "getResponse")
     m.urlTask.url = "https://api.instat.tv/data"
     token = readRegSec("accessToken", "Authentication")
@@ -97,6 +95,7 @@ sub dataRequest(date as string)
 end sub
 
 sub getResponse(event)
+    ' ? "GET RESPONSE RUN"
     index = event.getNode()
     response = event.getData()
     if response.code = 200
@@ -111,7 +110,7 @@ sub getResponse(event)
             ' ? "INDEX IS " index
             broadcast = convertToContentNode(broadcast)
             m.contentArray.push({ "date": date, "contentNode": broadcast })
-        else m.errors += 1
+        else m.emptyDays+=1
         end if
         m.top.contentArray = m.contentArray
     end if
@@ -124,7 +123,7 @@ function convertToContentNode(content as object) as object
     date = date.left(10)
     rowContent.title = date
     for each key in content
-        m.id = key.Lookup("id")
+        m.gameId = key.Lookup("id")
         sport = key.Lookup("sport")
         team1 = key.Lookup("team1")
         team2 = key.Lookup("team2")
@@ -143,6 +142,7 @@ function convertToContentNode(content as object) as object
         end if
         itemContent = rowContent.createChild("ContentNode")
         fieldsToAdd = {
+            "gameId" : m.gameId
             "favorite": false,
             "idTeam1": idTeam1,
             "idTeam2": idTeam2,
@@ -152,9 +152,8 @@ function convertToContentNode(content as object) as object
             "posterTeam1Uri": "",
             "posterTeam2Uri": "",
         }
-        itemContent.id = m.id
         itemContent.addFields(fieldsToAdd)
-        if m.global.content.doesExist(m.id.toStr()) = true
+        if m.global.content.doesExist(m.gameId.toStr()) = true
             itemContent.favorite = true
         end if
     end for
@@ -162,12 +161,12 @@ function convertToContentNode(content as object) as object
 end function
 
 sub updateFavorites()
-    ?"update run "
+    ' ?"update run "
     rows = m.content.getChildren(-1, 0)
     for each row in rows
         items = row.getChildren(-1, 0)
         for each item in items
-            if m.global.content.doesExist(item.id) = false
+            if m.global.content.doesExist(item.gameId.toStr()) = false
                 item.favorite = false
             else item.favorite = true
             end if
@@ -188,14 +187,14 @@ end sub
 sub addToFavorite()
     row = m.rowlist.content.getChild(m.rowlist.rowItemFocused[0])
     item = row.getChild(m.rowlist.rowItemFocused[1])
-    id = item.id.toStr()
+    id = item.gameId.toStr()
     item.favorite = not item.favorite
     if item.favorite = true
         item = {
             "favorite": item.favorite,
             "idTeam1": item.idTeam1,
             "idTeam2": item.idTeam2,
-            "id": item.id,
+            "gameId": item.gameId.toStr(),
             "sport": item.sport,
             "score": item.score,
             "title": item.title,
@@ -209,20 +208,18 @@ sub addToFavorite()
         m.favoriteContent.Delete(id)
     end if
     m.global.content = m.favoriteContent
-    ?"GLOBAL IS " m.global.content
+    ' ?"GLOBAL IS " m.global.content
 end sub
 
 sub showDetailPage()
     row = m.rowlist.content.getChild(m.rowlist.rowItemSelected[0])
     item = row.getChild(m.rowlist.rowItemSelected[1])
-    m.id = item.id.toStr()
-        DetailPage = CreateObject("roSGNode", "DetailPage")
-        DetailPage.id = m.id
-        DetailPage.opacity = 0
-        DetailPage.screenIndex = 1
-        DetailPage.parentItem = item
-        showScreen(DetailPage, true)
-    end sub
+    DetailPage = CreateObject("roSGNode", "DetailPage")
+    DetailPage.id = getTodayAsSeconds()
+    DetailPage.screenIndex = 1
+    DetailPage.parentItem = item
+    showScreen(DetailPage, true)
+end sub
 
 function onKeyEvent(key as string, press as boolean) as boolean
     handled = false

@@ -17,6 +17,8 @@ sub _initVars()
     m.myList.observeField("focusedChild", "switchScreen")
     m.options.observeField("focusedChild", "switchScreen")
     m.settingsScreen.observeField("isShown", "userLogout")
+    m.settingsScreen.focusable = true
+    m.homeScreen.focusable = true
 end sub
 
 sub userLogout(event)
@@ -55,15 +57,14 @@ end sub
 function onKeyEvent(key as string, press as boolean) as boolean
     ' ? "Home Page function onKeyEvent("key" as string, "press" as boolean) as boolean "
     handled = false
-    if press = false
-        if key = "down"
+    if press = true
+        if key = "down" and m.top.visibleScreen.focusable = true
             m.top.visibleScreen.setFocus(true)
             handled = true
-        else if key = "options"
-        end if
-    else if press = true and key = "up" and m.group.hasFocus() = false
+        else if key = "up" and m.group.hasFocus() = false
         m.group.setFocus(true)
         handled = true
+        end if
     end if
     return handled
 end function
@@ -71,6 +72,6 @@ end function
 sub setFocus()
     state = m.top.hasFocus()
     if state = true
-        m.homeScreen.setFocus(true)
+        m.top.visibleScreen.setFocus(true)
     end if
 end sub

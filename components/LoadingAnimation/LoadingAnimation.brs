@@ -69,7 +69,7 @@ sub switcher()
         ' m.top.visible = true
     else
         m.animateCircles.control = "stop"
-        m.top.colorsControl = "stop"
+        m.top.colorsControl = "finish"
         valuesToDefault()
         ' m.top.visible = false
     end if
@@ -88,6 +88,7 @@ sub setWidth()
 end sub
 
 sub valuesToDefault()
+    m.top.colorReverse = false
     m.circleOne.translation = [0, 60]
     m.circleTwo.translation = [60, 60]
     m.circleThree.translation = [120, 60]

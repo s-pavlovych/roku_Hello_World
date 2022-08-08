@@ -1,0 +1,38 @@
+<component name="ButtonsGridItem" extends="Group">
+
+<interface>
+    <field id = "itemContent" type = "node" onChange = "showcontent"/>
+    <field id= "focusPercent" type = "float" onChange = "showFocus"/> 
+    <field id= "gridHasFocus" type="Boolean" onChange = "showFocus" alwaysNotify= "true"/>
+
+</interface>
+
+<children>
+    <Poster
+    id = "buttonPoster"
+    height = "60"
+    width ="60"
+    loadDisplayMode	= "scaleToFit"
+    m.point.scaleRotateCenter = "[30, 30]"
+    opacity = "1"
+    />
+    <Poster
+    id = "buttonInFocusPoster"
+    height = "60"
+    width ="60"
+    loadDisplayMode	= "scaleToFit"
+    m.point.scaleRotateCenter = "[30, 30]"
+    opacity = "0"
+    />
+
+    <!-- <Label 
+id = "time" 
+horizAlign = "left"
+vertAlign = "bottom" 
+text = "time"
+/> -->
+</children>
+
+    <script type="text/brightscript" uri="ButtonsGridItem.brs" />
+    
+</component>

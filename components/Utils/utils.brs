@@ -1,4 +1,4 @@
-function checkRegSec( key as string, section as string)
+function checkRegSec(key as string, section as string)
     sec = CreateObject("roRegistrySection", section)
     if sec.Exists(key)
         ' ? "Token is OK"
@@ -30,3 +30,10 @@ sub deleteFromRegSec(key as string, section as string)
     sec.flush()
     ' ? "deleted"
 end sub
+
+function getTodayAsSeconds()
+    today = CreateObject("roDateTime")
+    today = today.AsSeconds().toStr()
+    return today
+    ? today
+end function

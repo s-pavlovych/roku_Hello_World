@@ -17,6 +17,7 @@ sub _initVars()
     m.posterTeam1 = m.top.findNode("posterTeam1")
     m.posterTeam2 = m.top.findNode("posterTeam2")
     m.favorite.observeField("isSelected", "switchFavorite", true)
+    m.play.observeField("isSelected", "playVideo", true)
 end sub
 
 sub setContent()
@@ -39,28 +40,42 @@ sub setLayout()
     m.posterTeam2.translation = [m.itemPoster.width / 2, m.itemPoster.height / 4]
 end sub
 
+sub playVideo()
+        playerScreen = CreateObject("roSGNode", "PlayerScreen")
+        playerScreen.observeField("isShown", "delScreen")
+        videocontent = createObject("RoSGNode", "ContentNode")
+        videocontent.title = "Example Video"
+        videocontent.StreamFormat = "hls"
+        videocontent.url = "https://cdn.flowplayer.com/a30bd6bc-f98b-47bc-abf5-97633d4faea0/hls/de3f6ca7-2db3-4689-8160-0f574a5996ad/playlist.m3u8"
+        playerScreen.content = videocontent
+        playerScreen.title = m.title.text
+        playerScreen.id = "PlayerScreen"
+        playerScreen.screenIndex = 1
+        showScreen(playerScreen, true)
+end sub
+
 sub switchFavorite()
     m.starIcon.visible = not m.starIcon.visible
     content = {}
     content = m.global.content
-    ? "content " content
+    ' ? "content " content
     if m.starIcon.visible = true
         item = {
             "favorite": true,
             "idTeam1": m.top.parentItem.idTeam1,
             "idTeam2": m.top.parentItem.idTeam2,
-            "id": m.top.parentItem.id,
+            "gameId": m.top.parentItem.gameId,
             "sport": m.top.parentItem.sport,
             "score": m.top.parentItem.score,
             "title": m.top.parentItem.title,
             "posterTeam1Uri": m.top.parentItem.posterTeam1Uri,
             "posterTeam2Uri": m.top.parentItem.posterTeam2Uri
         }
-        content.AddReplace(m.top.id, item)
-        saveInRegSec(FormatJson(item), m.top.id, "Favorites")
+        content.AddReplace(m.top.parentItem.gameId.toStr(), item)
+        saveInRegSec(FormatJson(item), m.top.parentItem.gameId.toStr(), "Favorites")
     else if m.starIcon.visible = false
-        content.delete(m.top.id)
-        deleteFromRegSec(m.top.id, "Favorites")
+        content.delete(m.top.parentItem.gameId.toStr())
+        deleteFromRegSec(m.top.parentItem.gameId.toStr(), "Favorites")
     end if
     m.global.content = content
 end sub
@@ -77,14 +92,3 @@ sub setFocus()
         m.play.setFocus(true)
     end if
 end sub
-
-function onKeyEvent(key as string, press as boolean) as boolean
-    handled = false
-    if press
-        if key = "back"
-            m.top.backTapped = true
-            handled = true
-        end if
-    end if
-    return handled
-end function

@@ -2,10 +2,6 @@
 
 <interface>
     <field id="parentItem" type="node" />
-    <!-- <field id="title" type="string" alias="title.text" />
-    <field id="posterTeam1" type="uri" alias="posterTeam1.uri" />
-    <field id="posterTeam2" type="uri" alias="posterTeam2.uri" />
-    <field id="favorite" type="boolean" alias="starIcon.visible" /> -->
 </interface>
 
 <children>

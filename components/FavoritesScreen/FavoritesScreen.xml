@@ -1,4 +1,4 @@
-<component name="FavoritesScreen" extends="Screen">
+<component name="FavoritesScreen" extends="Screen" initialFocus = "MarkupGrid">
 <interface>
     
 </interface>
@@ -6,7 +6,6 @@
 <children>
     <MarkupGrid 
     id = "MarkupGrid" 
-    translation = "[ 120, 160 ]" 
     itemComponentName = "MarkupGridItem"
     numColumns = "4" 
     numRows = "4" 
@@ -16,7 +15,7 @@
     drawFocusFeedback = "false"
     wrapDividerBitmapUri = "none"
     vertFocusAnimationStyle = "fixedFocus" 
-    rowFocusAnimationStyle = "floatingFocus"
+    horizFocusAnimationStyle = "floatingFocus"
     />
     <Label
     vertAlign = "center"
