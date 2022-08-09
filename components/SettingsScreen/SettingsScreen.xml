@@ -69,14 +69,15 @@
     itemSize = "[300, 72]"
     color = "0x262626ff" >
         <ContentNode role = "content" >
-        <ContentNode title = "On"/>
-        <ContentNode title = "Off"/>
+            <ContentNode title = "On"/>
+            <ContentNode title = "Off"/>
         </ContentNode>
     </RadioButtonList>
-
 </Poster>
 
-    </children>
-    <script type="text/brightscript" uri="SettingsScreen.brs" />
-    
+</children>
+
+<script type="text/brightscript" uri="SettingsScreen.brs" />
+<script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
+
 </component>

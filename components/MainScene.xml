@@ -6,7 +6,6 @@
         <function name= "delScreen" />
         <function name= "showLoader" />
         <function name = "hideLoader"/>
-        <function name = "showHome"/>
         <function name = "showHomePage"/>        
     </interface>
    

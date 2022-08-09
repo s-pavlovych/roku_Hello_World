@@ -34,7 +34,7 @@ sub setObservers()
     m.video.observeField("position", "updatePosition", true)
     m.video.observeField("duration", "updateDuration")
     m.video.observeField("state", "stateObservingFunction")
-    m.video.observeField("loop", "changeLoopIcon", true)
+    m.top.observeField("loop", "changeLoopIcon", true)
     m.buttonsGrid.observeField("itemSelected", "controlPlayback", true)
     m.buttonsGrid.observeField("pressed", "hideTimerStart", true)
     m.point.observeField("focusedChild", "scalePoint")
@@ -53,7 +53,7 @@ end sub
 
 sub getRepeatFromReg()
     ? "Regsection " readRegSec("Repeat", "Repeat")
-    m.video.loop = readRegSec("Repeat", "Repeat")
+    m.top.loop = readRegSec("Repeat", "Repeat")
 end sub
 
 sub changeLoopIcon(event)
@@ -103,7 +103,7 @@ sub stateObservingFunction(event)
     state = event.getData()
     playButton = m.buttonsGrid.content.getChild(2)
     if state = "finished"
-        if m.video.loop = true
+        if m.top.loop = true
             m.video.control = "play"
         else
             m.video.control = "stop"
@@ -139,8 +139,8 @@ sub hideButtons()
 end sub
 
 sub switchLoop()
-    m.video.loop = not m.video.loop
-    saveInRegSec(m.video.loop.toStr(), "Repeat", "Repeat")
+    m.top.loop = not m.top.loop
+    saveInRegSec(m.top.loop.toStr(), "Repeat", "Repeat")
 end sub
 
 sub scalePoint()
@@ -268,7 +268,6 @@ function onKeyEvent(key as string, press as boolean) as boolean
                 setPosition("forward", 10)
             end if
             hideTimerStart()
-            handled = true
         end if
         m.longPressObserveTimer.control = "start"
     else

@@ -2,6 +2,7 @@
 <interface>
 <field id="content" type="node" alias="video.content" />
 <field id="title" type="string" alias="title.text" />
+<field id="loop" type="boolean" />
 </interface>
 
 <children>

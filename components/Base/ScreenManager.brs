@@ -26,7 +26,7 @@ function showScreen(screen as object, animated as boolean)
 end function
 
 sub fadeScreen()
-    ? "FADE SCREEEN"
+    ' ? "FADE SCREEEN"
     m.top.animation = "finish"
     index = m.top.getChildCount() - 1
     screen = m.top.getChild(index)

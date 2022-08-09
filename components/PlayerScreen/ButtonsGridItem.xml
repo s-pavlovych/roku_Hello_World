@@ -9,19 +9,21 @@
 
 <children>
     <Poster
+    translation = "[5,5]"
     id = "buttonPoster"
     height = "60"
     width ="60"
     loadDisplayMode	= "scaleToFit"
-    m.point.scaleRotateCenter = "[30, 30]"
+    scaleRotateCenter = "[30, 30]"
     opacity = "1"
     />
     <Poster
+    translation = "[5,5]"
     id = "buttonInFocusPoster"
     height = "60"
     width ="60"
     loadDisplayMode	= "scaleToFit"
-    m.point.scaleRotateCenter = "[30, 30]"
+    scaleRotateCenter = "[30, 30]"
     opacity = "0"
     />
 

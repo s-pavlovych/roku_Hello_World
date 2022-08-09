@@ -3,6 +3,7 @@ sub init()
     setGroupTranslation()
     setAreaTranslation()
     setCheckBoxesTranslation()
+    getRepeatFromReg()
 end sub
 
 sub initVars()
@@ -20,6 +21,16 @@ sub initVars()
     m.replay.observeField("isSelected", "setReplay")
     m.qualityList.observeField("itemSelected", "saveSetting")
     m.replayList.observeField("itemSelected", "saveSetting")
+    m.loop = ""
+end sub
+
+sub getRepeatFromReg()
+    m.loop = readRegSec("Repeat", "Repeat")
+    if m.loop = "true"
+        m.replayList.checkedItem = 0
+    else
+        m.replayList.checkedItem = 1
+    end if
 end sub
 
 sub saveSetting(event)
@@ -27,6 +38,14 @@ sub saveSetting(event)
     m.group.setFocus(true)
     node.visible = false
     m.posterLogo.visible = true
+    item = event.getData()
+    if node.id = "replayList"
+        if item = 0
+            m.loop = true
+        else m.loop = false
+        end if
+        saveInRegSec(m.loop.toStr(), "Repeat", "Repeat")
+    end if
 end sub
 
 sub setQuality()
@@ -36,6 +55,7 @@ sub setQuality()
 end sub
 
 sub setReplay()
+    getRepeatFromReg()
     m.posterLogo.visible = false
     m.replayList.visible = true
     m.replayList.setFocus(true)

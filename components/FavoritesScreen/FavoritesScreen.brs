@@ -124,7 +124,6 @@ sub delFromFavorite()
         deleteFromRegSec(item.gameId.toStr(), "Favorites")
         m.markupGrid.content.removeChild(item)
         if focusIndex <> 0 and focusIndex < m.markupGrid.content.getChildren(-1, 0).Count()
-            ? "DFFFFFFFFFFFFFFFFFFFFFFFFFFf"
             m.markupGrid.jumpToItem = focusIndex
         else
             m.markupGrid.jumpToItem = focusIndex - 1
