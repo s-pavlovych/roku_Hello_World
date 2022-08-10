@@ -62,7 +62,6 @@
             <ContentNode title = "720" />
         </ContentNode>
     </RadioButtonList>
-
     <RadioButtonList
     visible = "false"
     id = "replayList"

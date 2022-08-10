@@ -22,13 +22,16 @@ function showScreen(screen as object, animated as boolean)
     else
         screen.opacity = 1
     end if
-    m.fade.fieldToInterp = ""
+    ' m.fade.fieldToInterp = ""
 end function
 
 sub fadeScreen()
     ' ? "FADE SCREEEN"
     m.top.animation = "finish"
     index = m.top.getChildCount() - 1
+    if index <= 1
+        m.top.isEmpty = "true"
+    end if
     screen = m.top.getChild(index)
     ' screen = event.getRoSGNode()
     screen.observeField("opacity", "popScreen")

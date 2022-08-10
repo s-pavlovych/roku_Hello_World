@@ -13,12 +13,22 @@ sub _initVars()
     m.homeScreen = m.top.findNode("homeScreen")
     m.settingsScreen = m.top.findNode("settingsScreen")
     m.favoritesScreen = m.top.findNode("favoritesScreen")
+    m.favoritesScreen.observeField("focusable", "backFocusOnButtons", true)
     m.home.observeField("focusedChild", "switchScreen")
     m.myList.observeField("focusedChild", "switchScreen")
     m.options.observeField("focusedChild", "switchScreen")
     m.settingsScreen.observeField("isShown", "userLogout")
     m.settingsScreen.focusable = true
     m.homeScreen.focusable = true
+end sub
+
+sub backFocusOnButtons(event)
+    state = event.getData()
+    ? "state is " state
+    if state = false and m.favoritesScreen.visible = true
+        ?"FFFFFFFFFFFFFFFFFFFFFFF"
+    m.group.setFocus(true)
+    end if
 end sub
 
 sub userLogout(event)

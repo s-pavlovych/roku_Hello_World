@@ -26,7 +26,7 @@
     <TextEditBox
     id="textEditBox"
     textColor="#616161"   
-    backgroundUri= "none"
+    backgroundUri= "pkg:/nil"
     leadingEllipsis= "true"
     />
     <!-- no background image -->

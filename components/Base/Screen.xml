@@ -1,6 +1,6 @@
 <component name="Screen" extends="Group">
     <interface>
-        <field id="backgroundUrl" type="string" alias="background.uri" value="pkg:/images/someBackground.jpg"/>
+        <field id="backgroundUrl" type="string" alias="background.uri" value="pkg:/images/background.jpg"/>
         <field id="screenIndex" type="integer" value="0"/>
         <field id="backTapped" type="bool" alwaysNotify="true"/>
         <field id="blendColor" type="color" alias="background.blendColor" />

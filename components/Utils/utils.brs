@@ -35,5 +35,4 @@ function getTodayAsSeconds()
     today = CreateObject("roDateTime")
     today = today.AsSeconds().toStr()
     return today
-    ? today
 end function

@@ -13,7 +13,6 @@
     itemSize = "[360, 270]" 
     itemSpacing = "[ 18, 30 ]" 
     drawFocusFeedback = "false"
-    wrapDividerBitmapUri = "none"
     vertFocusAnimationStyle = "fixedFocus" 
     horizFocusAnimationStyle = "floatingFocus"
     />

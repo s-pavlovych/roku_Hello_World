@@ -19,7 +19,6 @@
     vertFocusAnimationStyle = "fixedFocus" 
     rowFocusAnimationStyle = "floatingFocus"
     drawFocusFeedback = "false" 
-    wrapDividerBitmapUri = "none"
     />
 </children>
     <script type="text/brightscript" uri="HomeScreen.brs" />

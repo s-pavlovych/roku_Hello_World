@@ -10,7 +10,6 @@
     </interface>
 
 <children>
-    <Poster id="background" uri="pkg:/images/someBackground.jpg" width="1920" height="1080"/>
 
 <Animation id="backAnimation"  duration = "0.3" easeFunction="outQuad" repeat="false" control= "stop" delay= "0">
     <FloatFieldInterpolator

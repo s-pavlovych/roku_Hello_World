@@ -98,7 +98,6 @@ end function
 function getResponse(event)
     response = event.getData()
     if response.code = 200
-        ? response.code
         body = response.body
         if body <> invalid
             accessToken = body.lookup("access_token")

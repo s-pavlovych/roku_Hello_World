@@ -1,4 +1,4 @@
-<component name="PlayerScreen" extends="Screen" initialFocus = "video">
+<component name="PlayerScreen" extends="Screen" initialFocus = "buttonsGrid">
 <interface>
 <field id="content" type="node" alias="video.content" />
 <field id="title" type="string" alias="title.text" />
@@ -32,12 +32,12 @@ translation = "[0,0]">
         text = "title"
         translation = "[30,30]"
         />
-    </Rectangle>
-    <Timer
-	id = "hideTimer"
-	repeat = "false"
-	duration = "3"
-	/>
+</Rectangle>
+<Timer
+id = "hideTimer"
+repeat = "false"
+duration = "3"
+/>
 <Timer
 id = "longPressObserveTimer"
 repeat = "false"
@@ -54,65 +54,62 @@ repeat = "true"
 duration = "0.1"
 />
 <Rectangle
-        id = "PlayBar"
-        height = "180"
-        width = "1920"
-        color = "0x000000FF"
-        opacity = "0.8"
-        translation = "[0,900]"
-        >
+    id = "PlayBar"
+    height = "180"
+    width = "1920"
+    color = "0x000000FF"
+    opacity = "0.8"
+    translation = "[0,900]"
+    >
+    <Rectangle
+        id = "progressBarBack"
+        height = "9"
+        width = "1620"
+        color = "0xFFFFFFFF"
+        translation = "[150,45]">
         <Rectangle
-            id = "progressBarBack"
+            id = "progressBar"
             height = "9"
-            width = "1620"
-            color = "0xFFFFFFFF"
-            translation = "[150,45]">
-            <Rectangle
-                id = "progressBar"
-                height = "9"
-                width = "0"
-                color = "0xBF5FFFFF"/>
-                <Poster
-                id = "point"
-                uri = "pkg:/images/point.png"
-                translation = "[-10, -5]"
-                />
-
+            width = "0"
+            color = "0xBF5FFFFF"/>
+            <Poster
+            id = "point"
+            uri = "pkg:/images/point.png"
+            translation = "[-10, -5]"
+            />
         </Rectangle>
-        <Label
-            id = "currentPosition"
-            color = "0xFFFFFFFF"
-            width = "150"
-            height = "36"
-            text = "current">
-        </Label>
-        <Label
-            id = "duration"
-            color = "0xFFFFFFFF"
-            horizAlign = "right"
-            width = "150"
-            height = "36"
-            text = "duration"
-            >
-        </Label>
-        <CustomMarkupGrid 
-        id = "buttonsGrid" 
-        drawFocusFeedback = "false"
-        itemComponentName = "ButtonsGridItem"
-        numColumns = "5" 
-        numRows = "1" 
-        rowHeights = "[75]"
-        itemSize = "[75, 75]" 
-        itemSpacing = "[ 18, 30 ]" 
-        wrapDividerBitmapUri = "none"
-        vertFocusAnimationStyle = "fixedFocus" 
-        horizFocusAnimationStyle = "floatingFocus"
-        />
+    <Label
+        id = "currentPosition"
+        color = "0xFFFFFFFF"
+        width = "150"
+        height = "36"
+        text = "current">
+    </Label>
+    <Label
+        id = "duration"
+        color = "0xFFFFFFFF"
+        horizAlign = "right"
+        width = "150"
+        height = "36"
+        text = "duration"
+        >
+    </Label>
+    <CustomMarkupGrid 
+    id = "buttonsGrid" 
+    drawFocusFeedback = "false"
+    itemComponentName = "ButtonsGridItem"
+    numColumns = "5" 
+    numRows = "1" 
+    rowHeights = "[75]"
+    itemSize = "[75, 75]" 
+    itemSpacing = "[ 18, 30 ]" 
+    vertFocusAnimationStyle = "fixedFocus" 
+    horizFocusAnimationStyle = "floatingFocus"
+    />
     </Rectangle>
 </Group>
 
 </children>
-
     <script type="text/brightscript" uri="PlayerScreen.brs" />
     <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
 </component>
