@@ -1,12 +1,7 @@
-<component name="LoginScreen" extends="Screen" initialFocus="group"> 
+<component name="LoginScreen" extends="Screen" initialFocus="login"> 
 
 <children>
-<Poster
-id="logo" 
-uri="pkg:/images/channel-poster_hd.png"
-width="300"
-height="210"
-/>
+
 <FocusableLayoutGroup
     id="group"
 	translation="[0, 0]"
@@ -38,6 +33,12 @@ height="210"
 	footprintUriInFocus="pkg:/images/buttonFocus.png"
 	/>
 </FocusableLayoutGroup>
+<Poster
+id="logo" 
+uri="pkg:/images/channel-poster_fhd.png"
+width="300"
+height="210"
+/>
 </children>
 
 <script type="text/brightscript" uri="pkg:/components/LoginScreen/LoginScreen.brs" />

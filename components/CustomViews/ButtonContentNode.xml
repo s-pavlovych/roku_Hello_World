@@ -1,0 +1,6 @@
+<component name="ButtonContentNode" extends="ContentNode">
+<interface>
+    <field id="buttonInFocusPoster" type="uri" />
+</interface>
+    
+</component>

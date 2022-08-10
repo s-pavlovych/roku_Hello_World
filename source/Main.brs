@@ -5,6 +5,9 @@ sub Main()
     screen.setMessagePort(m.port)
 
     scene = screen.CreateScene("MainScene")
+    m.global = screen.getGlobalNode()
+    m.global.id = "FavoriteContent"
+    m.global.addField("content", "assocarray", true)
     screen.show()'vscode_rale_tracker_entry
     scene.observeField("exitValue", m.port)
     while(true)
@@ -20,4 +23,3 @@ sub Main()
         end if
     end while
 end sub
-

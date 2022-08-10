@@ -1,0 +1,32 @@
+<component name="FavoritesScreen" extends="Screen" initialFocus = "MarkupGrid">
+<interface>
+    
+</interface>
+
+<children>
+    <MarkupGrid 
+    id = "MarkupGrid" 
+    itemComponentName = "MarkupGridItem"
+    numColumns = "4" 
+    numRows = "4" 
+    rowHeights = "[270]"
+    itemSize = "[360, 270]" 
+    itemSpacing = "[ 18, 30 ]" 
+    drawFocusFeedback = "false"
+    vertFocusAnimationStyle = "fixedFocus" 
+    horizFocusAnimationStyle = "floatingFocus"
+    />
+    <Label
+    vertAlign = "center"
+    visible = "false"
+    id="Label"
+    text = "Your list is empty"
+    width = "660"
+    height = "75"
+    /> 
+</children>
+
+<script type="text/brightscript" uri="FavoritesScreen.brs" />
+<script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
+
+</component>

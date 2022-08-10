@@ -1,0 +1,82 @@
+<component name="SettingsScreen" extends="Screen">
+
+    <interface>
+        
+    </interface>
+
+    <children>
+    <FocusableLayoutGroup
+    id="group"
+	translation="[0, 0]"
+	horizAlignment="center"
+	vertAlignment = "center"
+	itemSpacings= "[30,30]">
+	<AnimatedButton
+	height="90"
+    width= "150"
+    id = "replay"
+    text = "Replay"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "quality"
+    text = "Quality"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "logout"
+    text = "Logout"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+</FocusableLayoutGroup>
+<Poster
+    id = "contentArea"
+    uri= "pkg:/images/empty-channel-poster_fhd.png"
+    width= "600"
+    height= "600">
+    <Poster
+    id = "posterLogo"
+    uri= "pkg:/images/channel-poster_fhd.png"
+    width= "600"
+    height= "600"
+    visible = "true"/>
+    <RadioButtonList
+    id = "qualityList"
+    visible = "false"
+    itemSize = "[300, 72]"
+    color = "0x262626ff" >
+        <ContentNode role = "content" >
+            <ContentNode title = "4K" />
+            <ContentNode title = "2K" />
+            <ContentNode title = "1080" />
+            <ContentNode title = "720" />
+        </ContentNode>
+    </RadioButtonList>
+    <RadioButtonList
+    visible = "false"
+    id = "replayList"
+    itemSize = "[300, 72]"
+    color = "0x262626ff" >
+        <ContentNode role = "content" >
+            <ContentNode title = "On"/>
+            <ContentNode title = "Off"/>
+        </ContentNode>
+    </RadioButtonList>
+</Poster>
+
+</children>
+
+<script type="text/brightscript" uri="SettingsScreen.brs" />
+<script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
+
+</component>

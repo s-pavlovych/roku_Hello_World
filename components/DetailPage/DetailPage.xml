@@ -1,0 +1,81 @@
+<component name="DetailPage" extends="Screen">
+
+<interface>
+    <field id="parentItem" type="node" />
+</interface>
+
+<children>
+    <Poster 
+    id = "itemPoster"
+    uri = "pkg:/images/posterBack.png"
+    height = "900"
+    width = "1300"
+    >
+    <Poster 
+    id = "starIcon"
+    uri = "pkg:/images/favorite2.png"
+    visible = "true"
+    />
+    <Poster
+    id = "posterTeam1" 
+    loadDisplayMode	= "scaleToFit"
+    translation = "[0,0]"
+    uri = "pkg:/images/favorite2.png"
+    />
+    <Poster
+    id = "posterTeam2"
+    loadDisplayMode	= "scaleToFit" 
+    translation = "[0,0]"
+    uri = "pkg:/images/favorite2.png"
+    />
+    <ScrollingLabel
+    translation="[0, 30]"
+    scrollSpeed = "50"
+    id = "title" 
+    text = " adlksaldksldkadadsdsda"
+    horizAlign = "center"
+    vertAlign = "bottom"
+    maxWidth = "1150"
+    height = "75"
+    />
+    </Poster>
+
+    <FocusableLayoutGroup
+    id="group"
+    layoutDirection= "horiz"
+	horizAlignment="center"
+	vertAlignment = "top"
+	itemSpacings= "[90,90]">
+	<AnimatedButton
+	height="90"
+    width= "150"
+    id = "play"
+    text = "Play"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "buy"
+    text = "Buy"
+	focusable="true"
+	footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+    <AnimatedButton
+	height="90"
+    width= "150"
+    id = "favorite"
+    text = "Favorite"
+	focusable="true"
+    footprintUri= "pkg:/images/buttonUnfocused.png"
+	footprintUriInFocus="pkg:/images/buttonFocus.png"
+	/>
+</FocusableLayoutGroup>
+</children>
+
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
+    <script type="text/brightscript" uri="DetailPage.brs" />
+</component>

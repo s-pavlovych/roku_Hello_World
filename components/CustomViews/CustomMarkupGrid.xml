@@ -1,0 +1,17 @@
+<component name="CustomMarkupGrid" extends="MarkupGrid">
+    
+    <interface>
+        <field id="pressed" type="boolean" alwaysNotify="true" />
+    </interface>
+
+    <script type="text/brightscript" >
+    <![CDATA[
+    function onKeyEvent(key as string, press as boolean) as boolean
+    handled = false        
+    m.top.pressed = true
+    ? "function onKeyEvent("key" as string, "press" as boolean) as boolean", m.top.pressed
+    return handled
+    end function
+    ]]>
+        </script>
+</component>

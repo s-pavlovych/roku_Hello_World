@@ -3,7 +3,7 @@
         <field id="url" type="string" />
         <field id="method" type="string" />
         <field id="body" type="assocarray" />
-        <field id="header" type="assocarray" />
+        <field id="headers" type="assocarray" />
         <field id="responseData" type="assocarray" />
     </interface>
 

@@ -1,0 +1,26 @@
+<component name="HomeScreen" extends="Screen" initialFocus = "rowList">
+<interface>
+    <field id="access" type="boolean" />
+    <field id="contentArray" type="array" onChange= "setContent" />
+</interface>
+<children>
+    <RowList 
+    id = "rowList" 
+    translation = "[ 120, 160 ]" 
+    itemComponentName = "RowListItem" 
+    showRowLabel = "[false,true]"
+    numRows = "3" 
+    rowHeights = "[450]"
+    itemSize = "[ 1800, 270 ]" 
+    rowItemSpacing="[[18,0]]"
+    rowItemSize = "[ [600, 450], [360, 270]]" 
+    itemSpacing = "[ 0, 60 ]" 
+    rowSpacings = "[ 30 ]"
+    vertFocusAnimationStyle = "fixedFocus" 
+    rowFocusAnimationStyle = "floatingFocus"
+    drawFocusFeedback = "false" 
+    />
+</children>
+    <script type="text/brightscript" uri="HomeScreen.brs" />
+    <script type="text/brightscript" uri="pkg:/components/Utils/utils.brs" />
+</component>

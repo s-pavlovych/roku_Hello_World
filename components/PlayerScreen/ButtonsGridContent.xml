@@ -1,0 +1,30 @@
+<component name="ButtonsGridContent" extends="ContentNode">
+
+<children>
+<ButtonContentNode 
+HDPosterUrl = "pkg:/images/repeatUnfocused.png"
+buttonInFocusPoster = "pkg:/images/repeatFocused.png"
+title = "Rectangle Node"
+/>
+<ButtonContentNode 
+HDPosterUrl = "pkg:/images/rewind.png"
+buttonInFocusPoster = "pkg:/images/rewindFocused.png"
+title = "rewind"
+/>
+<ButtonContentNode 
+HDPosterUrl = "pkg:/images/play.png"
+buttonInFocusPoster = "pkg:/images/playFocused.png"
+title = "play"
+/>
+<ButtonContentNode 
+HDPosterUrl = "pkg:/images/forward.png"
+buttonInFocusPoster = "pkg:/images/forwardFocused.png"
+title = "forward"
+/>
+<ButtonContentNode 
+HDPosterUrl = "pkg:/images/replay.png"
+buttonInFocusPoster = "pkg:/images/replayFocused.png"
+title = "replay"
+/>
+</children>
+</component>
