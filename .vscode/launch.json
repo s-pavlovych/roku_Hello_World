@@ -5,12 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "BrightScript Debug: Launch",
             "type": "brightscript",
             "request": "launch",
-            "password": "padev",
-            "rootDir": "${workspaceFolder}"
-            "injectRaleTrackerTask": true
+            "name": "DEBUG",
+            "stopOnEntry": false,
+            "envFile": "${workspaceFolder}/.env",
+            // "host": "${env:ROKU_DEV_TARGET}",
+            "password": "${env:ROKU_DEV_PASSWORD}",
+            "rootDir": "${workspaceFolder}",
+            "injectRaleTrackerTask": true,
+            "enableDebugProtocol": true,
+            "enableDebuggerAutoRecovery": true,
+            "files": [
+                "manifest",
+                "source/**/*.*",
+                "components/**/*.*",
+                "images/**/*.*",
+                "locale/**/*.*",
+                "fonts/**/*.*"
+              ]
         }
     ]
 }
